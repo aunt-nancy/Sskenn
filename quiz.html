@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skin Quiz — SSKENN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#e6dbc5;--cream-2:#ddcfb4;--paper:#efe7d6;--mocha:#564231;--taupe:#3c3026;
+    --ink:#2b2218;--ink-soft:#776857;--light:#f3ebda;--light-soft:#c2b298;
+    --gold:#a9803f;--gold-lt:#caa168;--line:rgba(43,34,24,.2);--line-gold:rgba(169,128,63,.4);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:'Outfit',sans-serif;
+    font-weight:300;line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:400;line-height:1.12;color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--gold);color:var(--light)}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 50px}
+  .kicker{font-size:10.5px;letter-spacing:.4em;text-transform:uppercase;font-weight:400;color:var(--gold)}
+  .btn{display:inline-block;padding:17px 38px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    font-weight:400;cursor:pointer;transition:all .4s ease;border:1px solid var(--ink);background:transparent}
+  .btn-fill{background:var(--ink);color:var(--light)}
+  .btn-fill:hover{background:transparent;color:var(--ink)}
+  .btn-line:hover{background:var(--ink);color:var(--light)}
+
+  /* ANNOUNCE + HEADER */
+  .announce{background:var(--taupe);color:var(--light-soft);text-align:center;
+    font-size:10px;letter-spacing:.28em;text-transform:uppercase;padding:11px 0}
+  header.site{background:var(--cream);border-bottom:1px solid var(--line-gold)}
+  .util{max-width:1240px;margin:0 auto;padding:12px 50px;display:flex;justify-content:space-between;
+    font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+  .util a:hover{color:var(--gold)}
+  .util .u-right{display:flex;gap:26px}
+  .brand-row{text-align:center;padding:34px 50px 30px}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:50px;letter-spacing:.52em;
+    font-weight:500;color:var(--ink);padding-left:.52em}
+  .logo .lsub{display:block;font-family:'Outfit';font-size:9px;letter-spacing:.62em;
+    color:var(--gold);margin-top:6px;font-weight:400;padding-left:.12em}
+  .nav-row{border-top:1px solid var(--line-gold)}
+  .nav-menu{max-width:1240px;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap;list-style:none}
+  .nav-menu a{display:block;padding:20px 26px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:400;color:var(--ink);transition:color .28s ease}
+  .nav-menu a:hover,.nav-menu a.here{color:var(--gold)}
+
+  /* PAGE HEADER */
+  .page-head{position:relative;height:42vh;min-height:320px;display:flex;align-items:center;
+    justify-content:center;text-align:center;overflow:hidden}
+  .page-head img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .page-head::after{content:"";position:absolute;inset:0;background:rgba(38,30,21,.6)}
+  .page-head .ph-in{position:relative;z-index:2;padding:0 30px}
+  .page-head .kicker{color:var(--gold-lt)}
+  .page-head h1{font-size:clamp(46px,5.4vw,86px);font-weight:300;color:var(--light);
+    margin-top:14px;letter-spacing:-0.01em}
+  .page-head p{color:rgba(243,235,218,.8);max-width:430px;margin:14px auto 0;font-size:15px}
+  .ph-rule{width:46px;height:1px;background:var(--gold-lt);margin:20px auto 0}
+
+  /* QUIZ */
+  .quiz-sec{padding:96px 0 120px;background:var(--paper)}
+  .quiz-wrap{max-width:680px;margin:0 auto;padding:0 30px}
+  .quiz-card{background:var(--light);border:1px solid var(--line-gold);padding:54px 56px}
+
+  .q-progress{display:flex;align-items:center;gap:14px;margin-bottom:36px}
+  .q-bar{flex:1;height:2px;background:rgba(169,128,63,.22);overflow:hidden}
+  .q-bar span{display:block;height:100%;width:20%;background:var(--gold);transition:width .45s ease}
+  .q-count{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+
+  .q-step{display:none}
+  .q-step.active{display:block;animation:fade .5s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .q-text{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.4vw,40px);
+    font-weight:400;line-height:1.16;margin-bottom:30px}
+  .q-opts{display:flex;flex-direction:column;gap:10px}
+  .q-opt{text-align:left;background:transparent;border:1px solid var(--line);
+    padding:16px 22px;font-family:'Outfit';font-size:14.5px;font-weight:300;color:var(--ink);
+    cursor:pointer;transition:all .25s ease;position:relative}
+  .q-opt:hover{border-color:var(--gold);background:rgba(169,128,63,.06)}
+  .q-opt.sel{border-color:var(--gold);background:rgba(169,128,63,.09);
+    box-shadow:inset 3px 0 0 var(--gold)}
+  .q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:30px}
+  .q-back{background:none;border:none;cursor:pointer;font-family:'Outfit';font-size:11px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);transition:color .25s}
+  .q-back:hover{color:var(--gold)}
+  .q-hint{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+
+  /* RESULT */
+  .q-result{display:none}
+  .q-result.show{display:block;animation:fade .55s ease}
+  .q-result .kicker{display:block;margin-bottom:8px}
+  .q-result h2{font-size:clamp(32px,4vw,52px);font-weight:300;margin-bottom:10px}
+  .q-result h2 em{font-style:italic;color:var(--gold)}
+  .q-summary{color:var(--ink-soft);font-size:15px;margin-bottom:34px}
+  .routine{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .routine-col{padding:28px 26px;border:1px solid var(--line-gold)}
+  .routine-col.am{background:var(--paper)}
+  .routine-col.pm{background:var(--mocha)}
+  .routine-col .rc-label{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+    font-weight:400;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+  .routine-col.am .rc-label{color:var(--gold)}
+  .routine-col.pm .rc-label{color:var(--gold-lt)}
+  .routine-col ol{list-style:none;counter-reset:r}
+  .routine-col li{counter-increment:r;padding:9px 0;font-size:14px;display:flex;gap:12px;
+    align-items:baseline;border-bottom:1px dashed var(--line)}
+  .routine-col li:last-child{border-bottom:none}
+  .routine-col li::before{content:counter(r,decimal-leading-zero);
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px}
+  .routine-col.am li{color:var(--ink)}
+  .routine-col.am li::before{color:var(--gold)}
+  .routine-col.pm{border-color:rgba(202,161,104,.4)}
+  .routine-col.pm li{color:var(--light);border-color:rgba(202,161,104,.25)}
+  .routine-col.pm li::before{color:var(--gold-lt)}
+  .q-note{margin-top:22px;font-size:13.5px;color:var(--ink-soft);font-style:italic;
+    background:rgba(169,128,63,.1);border-left:2px solid var(--gold);padding:16px 20px}
+  .q-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .q-restart{background:none;border:1px solid var(--ink);color:var(--ink);padding:17px 32px;
+    font-family:'Outfit';font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    cursor:pointer;transition:all .35s ease}
+  .q-restart:hover{background:var(--ink);color:var(--light)}
+
+  /* FOOTER */
+  footer{background:var(--taupe);color:var(--light);padding:90px 0 40px}
+  .foot-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:48px;
+    padding-bottom:56px;border-bottom:1px solid rgba(202,161,104,.28)}
+  .foot-brand .logo{font-size:30px;color:var(--light);padding-left:.4em;letter-spacing:.4em}
+  .foot-brand p{color:var(--light-soft);font-size:13.5px;max-width:280px;margin-top:18px}
+  .foot-col h4{font-family:'Outfit';font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold-lt);margin-bottom:20px;font-weight:400}
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .foot-col a{font-size:13px;color:var(--light-soft);transition:color .25s}
+  .foot-col a:hover{color:var(--gold-lt)}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:32px;flex-wrap:wrap;gap:12px;
+    font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--light-soft)}
+
+  @media(max-width:980px){
+    .wrap{padding:0 28px}
+    .util{padding:12px 28px}
+    .logo{font-size:38px}
+    .nav-menu a{padding:15px 15px;font-size:10px}
+    .quiz-card{padding:38px 26px}
+    .foot-top{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:560px){
+    .routine{grid-template-columns:1fr}
+    .foot-top{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="announce">Complimentary samples &amp; shipping over $50 — expert-reviewed skincare</div>
+
+<header class="site">
+  <div class="util">
+    <span>Haute soin · clinically considered</span>
+    <span class="u-right"><a href="#">Search</a><a href="#">Account</a><a href="shop.html">Bag (0)</a></span>
+  </div>
+  <div class="brand-row">
+    <a href="index.html" class="logo">SSKENN<span class="lsub">Skincare</span></a>
+  </div>
+  <nav class="nav-row">
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="quiz.html" class="here">Skin Quiz</a></li>
+      <li><a href="concerns.html">Skin Concerns</a></li>
+      <li><a href="professionals.html">Professionals</a></li>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="page-head">
+  <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1500&q=80" alt="Skincare consultation">
+  <div class="ph-in">
+    <span class="kicker">Find Your Routine</span>
+    <h1>Skin Quiz</h1>
+    <p>Five questions about your skin — and a routine composed around the answers.</p>
+    <div class="ph-rule"></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="quiz-sec">
+  <div class="quiz-wrap">
+    <div class="quiz-card">
+
+      <div class="q-progress">
+        <div class="q-bar"><span id="qBar"></span></div>
+        <div class="q-count" id="qCount">Question 01 / 05</div>
+      </div>
+
+      <div class="q-step active" data-step="0">
+        <div class="q-text">What is your skin type?</div>
+        <div class="q-opts" data-key="type">
+          <button class="q-opt" data-val="Oily">Oily — shine and visible pores</button>
+          <button class="q-opt" data-val="Dry">Dry — tightness or flaking</button>
+          <button class="q-opt" data-val="Combination">Combination — oily centre, drier elsewhere</button>
+          <button class="q-opt" data-val="Normal">Normal — generally balanced</button>
+        </div>
+      </div>
+
+      <div class="q-step" data-step="1">
+        <div class="q-text">What is your biggest concern?</div>
+        <div class="q-opts" data-key="concern">
+          <button class="q-opt" data-val="Acne">Acne &amp; breakouts</button>
+          <button class="q-opt" data-val="Dark Spots">Dark spots &amp; uneven tone</button>
+          <button class="q-opt" data-val="Fine Lines">Fine lines &amp; firmness</button>
+          <button class="q-opt" data-val="Dryness">Dryness &amp; dehydration</button>
+          <button class="q-opt" data-val="Texture">Texture &amp; dullness</button>
+          <button class="q-opt" data-val="Redness">Redness &amp; sensitivity</button>
+        </div>
+      </div>
+
+      <div class="q-step" data-step="2">
+        <div class="q-text">How sensitive is your skin?</div>
+        <div class="q-opts" data-key="sensitivity">
+          <button class="q-opt" data-val="Low">Not very — it tolerates most things</button>
+          <button class="q-opt" data-val="Medium">Somewhat — the occasional reaction</button>
+          <button class="q-opt" data-val="High">Very — it reacts easily</button>
+        </div>
+      </div>
+
+      <div class="q-step" data-step="3">
+        <div class="q-text">Do you currently use retinol, acids, or vitamin C?</div>
+        <div class="q-opts" data-key="actives">
+          <button class="q-opt" data-val="Regular">Yes — regularly</button>
+          <button class="q-opt" data-val="Occasional">Occasionally</button>
+          <button class="q-opt" data-val="Never">Never used them</button>
+        </div>
+      </div>
+
+      <div class="q-step" data-step="4">
+        <div class="q-text">Do you prefer a simple or an advanced routine?</div>
+        <div class="q-opts" data-key="level">
+          <button class="q-opt" data-val="Simple">Simple — keep it to the essentials</button>
+          <button class="q-opt" data-val="Advanced">Advanced — I want targeted steps</button>
+        </div>
+      </div>
+
+      <div class="q-nav" id="qNav">
+        <button class="q-back" id="qBack" style="visibility:hidden">← Back</button>
+        <span class="q-hint">Select an answer to continue</span>
+      </div>
+
+      <!-- RESULT -->
+      <div class="q-result" id="qResult">
+        <span class="kicker">Your Personalized Result</span>
+        <h2>Your <em>SSKENN</em> routine.</h2>
+        <p class="q-summary" id="qSummary"></p>
+        <div class="routine">
+          <div class="routine-col am">
+            <div class="rc-label">☀ Morning</div>
+            <ol id="qAM"></ol>
+          </div>
+          <div class="routine-col pm">
+            <div class="rc-label">☾ Evening</div>
+            <ol id="qPM"></ol>
+          </div>
+        </div>
+        <div class="q-note" id="qNote"></div>
+        <div class="q-actions">
+          <a class="btn btn-fill" href="shop.html">Shop This Routine</a>
+          <button class="q-restart" id="qRestart">Retake the Quiz</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="logo">SSKENN</span>
+        <p>Personalized routines, honest education, and barrier-first formulas for healthy, glowing skin at every stage.</p>
+      </div>
+      <div class="foot-col"><h4>Shop</h4>
+        <ul><li><a href="shop.html">All Products</a></li><li><a href="shop.html">Cleansers</a></li>
+          <li><a href="shop.html">Serums</a></li><li><a href="shop.html">Moisturizers</a></li>
+          <li><a href="shop.html">Sunscreen</a></li></ul></div>
+      <div class="foot-col"><h4>Discover</h4>
+        <ul><li><a href="concerns.html">Skin Concerns</a></li><li><a href="quiz.html">Skin Quiz</a></li>
+          <li><a href="learn.html">Ingredients Library</a></li><li><a href="learn.html">Routine Guides</a></li>
+          <li><a href="learn.html">The Journal</a></li></ul></div>
+      <div class="foot-col"><h4>The Maison</h4>
+        <ul><li><a href="about.html">Our Story</a></li><li><a href="about.html">Reviews</a></li>
+          <li><a href="professionals.html">Professionals</a></li><li><a href="professionals.html">Consultations</a></li>
+          <li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 SSKENN · sskenn.com</span>
+      <span>Privacy · Terms · Accessibility</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const answers={};
+  const steps=document.querySelectorAll('.q-step');
+  const bar=document.getElementById('qBar');
+  const count=document.getElementById('qCount');
+  const backBtn=document.getElementById('qBack');
+  const nav=document.getElementById('qNav');
+  const result=document.getElementById('qResult');
+  let cur=0;
+  const pad=n=>String(n).padStart(2,'0');
+
+  function show(n){
+    steps.forEach(s=>s.classList.remove('active'));
+    steps[n].classList.add('active');
+    bar.style.width=((n+1)/5*100)+'%';
+    count.textContent='Question '+pad(n+1)+' / 05';
+    backBtn.style.visibility=n===0?'hidden':'visible';
+    cur=n;
+  }
+  backBtn.addEventListener('click',()=>{if(cur>0)show(cur-1);});
+
+  document.querySelectorAll('.q-opts').forEach(group=>{
+    const key=group.dataset.key;
+    group.querySelectorAll('.q-opt').forEach(opt=>{
+      opt.addEventListener('click',()=>{
+        group.querySelectorAll('.q-opt').forEach(o=>o.classList.remove('sel'));
+        opt.classList.add('sel');
+        answers[key]=opt.dataset.val;
+        setTimeout(()=>{cur<4?show(cur+1):buildResult();},270);
+      });
+    });
+  });
+
+  function buildResult(){
+    steps.forEach(s=>s.classList.remove('active'));
+    nav.style.display='none';
+    bar.style.width='100%';
+    count.textContent='Complete';
+    result.classList.add('show');
+
+    const treat={
+      'Acne':'Salicylic acid treatment','Dark Spots':'Vitamin C + niacinamide serum',
+      'Fine Lines':'Retinol treatment','Dryness':'Hyaluronic acid hydrating serum',
+      'Texture':'Gentle exfoliating treatment','Redness':'Niacinamide soothing serum'
+    }[answers.concern]||'Targeted serum';
+    const advanced=answers.level==='Advanced';
+
+    const am=['Gentle cleanser'];
+    const pm=['Gentle cleanser'];
+    if(advanced){
+      am.push('Antioxidant / vitamin C serum');
+      if(answers.concern==='Dryness')am.push('Hydrating layer');
+    }
+    am.push('Moisturizer','Sunscreen SPF '+(answers.sensitivity==='High'?'50 (mineral)':'30+'));
+    pm.push(treat);
+    if(advanced)pm.push('Hydrating layer');
+    pm.push('Moisturizer');
+
+    document.getElementById('qAM').innerHTML=am.map(x=>'<li>'+x+'</li>').join('');
+    document.getElementById('qPM').innerHTML=pm.map(x=>'<li>'+x+'</li>').join('');
+    document.getElementById('qSummary').textContent=
+      'For '+(answers.type||'your').toLowerCase()+' skin focused on '+
+      (answers.concern||'overall health').toLowerCase()+', here is a '+
+      (advanced?'targeted, multi-step':'simple, low-effort')+' routine to begin with.';
+
+    let note;
+    if(answers.sensitivity==='High'){
+      note='Your skin reacts easily — introduce one new active at a time, patch test first, and give each product two to three weeks. A mineral SPF tends to be gentler for reactive skin.';
+    }else if(answers.actives==='Never'){
+      note='New to actives? Begin your treatment step just two or three nights a week and build up slowly as your skin adjusts.';
+    }else if(answers.actives==='Regular'){
+      note='Since you already use actives, you can layer your treatment step with confidence — just avoid combining retinol and strong acids on the same night.';
+    }else{
+      note='Consistency matters more than complexity — give this routine four to six weeks before judging results, and wear daily SPF without exception.';
+    }
+    document.getElementById('qNote').textContent=note;
+    window.scrollTo({top:document.querySelector('.quiz-sec').offsetTop-20,behavior:'smooth'});
+  }
+
+  document.getElementById('qRestart').addEventListener('click',()=>{
+    for(const k in answers)delete answers[k];
+    document.querySelectorAll('.q-opt').forEach(o=>o.classList.remove('sel'));
+    result.classList.remove('show');
+    nav.style.display='flex';
+    show(0);
+  });
+
+  show(0);
+</script>
+
+</body>
+</html>
