@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSKENN — Skincare That Understands Your Skin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#e6dbc5;
+    --cream-2:#ddcfb4;
+    --paper:#efe7d6;
+    --mocha:#564231;
+    --taupe:#3c3026;
+    --ink:#2b2218;
+    --ink-soft:#776857;
+    --light:#f3ebda;
+    --light-soft:#c2b298;
+    --gold:#a9803f;
+    --gold-lt:#caa168;
+    --line:rgba(43,34,24,.2);
+    --line-gold:rgba(169,128,63,.4);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:'Outfit',sans-serif;
+    font-weight:300;line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:400;line-height:1.12;color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--gold);color:var(--light)}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 50px}
+
+  /* refined small-caps label */
+  .kicker{font-size:10.5px;letter-spacing:.4em;text-transform:uppercase;
+    font-weight:400;color:var(--gold)}
+  /* understated text link */
+  .tlink{display:inline-flex;align-items:center;gap:10px;font-size:11px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--ink);
+    padding-bottom:5px;border-bottom:1px solid var(--line-gold);transition:all .35s ease}
+  .tlink:hover{color:var(--gold);gap:16px}
+  .btn{display:inline-block;padding:17px 38px;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;font-weight:400;cursor:pointer;transition:all .4s ease;
+    border:1px solid var(--ink)}
+  .btn-fill{background:var(--ink);color:var(--light);border-color:var(--ink)}
+  .btn-fill:hover{background:transparent;color:var(--ink)}
+  .btn-out{background:transparent;color:var(--ink)}
+  .btn-out:hover{background:var(--ink);color:var(--light)}
+  .on-dark .btn-out{border-color:rgba(243,235,218,.5);color:var(--light)}
+  .on-dark .btn-out:hover{background:var(--light);color:var(--mocha);border-color:var(--light)}
+
+  /* ANNOUNCE */
+  .announce{background:var(--taupe);color:var(--light-soft);text-align:center;
+    font-size:10px;letter-spacing:.28em;text-transform:uppercase;padding:11px 0;font-weight:400}
+
+  /* ===== HEADER — stacked, airy ===== */
+  header.site{background:var(--cream);border-bottom:1px solid var(--line-gold)}
+  .util{max-width:1240px;margin:0 auto;padding:12px 50px;display:flex;justify-content:space-between;
+    font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+  .util a{transition:color .25s}
+  .util a:hover{color:var(--gold)}
+  .util .u-right{display:flex;gap:26px}
+  .brand-row{text-align:center;padding:34px 50px 30px}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:50px;letter-spacing:.52em;
+    font-weight:500;color:var(--ink);padding-left:.52em}
+  .logo .lsub{display:block;font-family:'Outfit';font-size:9px;letter-spacing:.62em;
+    color:var(--gold);margin-top:6px;font-weight:400;padding-left:.12em}
+  .nav-row{border-top:1px solid var(--line-gold)}
+  .nav-menu{max-width:1240px;margin:0 auto;display:flex;justify-content:center;
+    flex-wrap:wrap;list-style:none}
+  .nav-menu a{display:block;padding:20px 26px;font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;font-weight:400;color:var(--ink);transition:color .28s ease}
+  .nav-menu a:hover,.nav-menu a.here{color:var(--gold)}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;height:88vh;min-height:620px;display:flex;align-items:center;
+    overflow:hidden}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(95deg,rgba(38,30,21,.86) 0%,rgba(38,30,21,.5) 40%,rgba(38,30,21,.08) 75%)}
+  .hero-in{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 50px;width:100%}
+  .hero-in .blk{max-width:560px}
+  .hero .kicker{color:var(--gold-lt)}
+  .hero h1{font-size:clamp(54px,6.6vw,108px);font-weight:300;color:var(--light);
+    margin:26px 0 26px;letter-spacing:-0.015em}
+  .hero h1 em{font-style:italic;color:var(--gold-lt)}
+  .hero p{color:rgba(243,235,218,.82);font-size:16px;max-width:400px;
+    margin-bottom:40px;font-weight:300}
+  .hero-cta{display:flex;gap:30px;align-items:center;flex-wrap:wrap}
+  .hero-cta .tlink{color:var(--light);border-color:rgba(243,235,218,.4)}
+  .hero-cta .tlink:hover{color:var(--gold-lt)}
+
+  /* section rhythm — generous */
+  .sec{padding:160px 0}
+  .center{text-align:center}
+  .lede{max-width:560px}
+  .center .lede{margin-left:auto;margin-right:auto}
+  h2.display{font-size:clamp(40px,4.6vw,76px);font-weight:300;margin:22px 0;letter-spacing:-0.01em}
+  h2.display em{font-style:italic;color:var(--gold)}
+  .body-soft{color:var(--ink-soft);font-size:16px}
+  .rule{width:46px;height:1px;background:var(--gold);margin:0 0 4px}
+  .center .rule{margin-left:auto;margin-right:auto}
+
+  /* ===== PHILOSOPHY — quiet pillars ===== */
+  .philo{background:var(--paper)}
+  .philo .statement{max-width:840px;margin:0 auto 86px;text-align:center}
+  .philo .statement h2{font-size:clamp(30px,3.4vw,50px);font-weight:300;font-style:italic;
+    line-height:1.34;color:var(--ink)}
+  .philo .statement h2 em{font-style:normal;color:var(--gold)}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line-gold)}
+  .pillar{padding:54px 40px;text-align:center;border-right:1px solid var(--line-gold)}
+  .pillar:last-child{border-right:none}
+  .pillar .pn{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:var(--gold)}
+  .pillar h3{font-size:25px;font-weight:400;margin:14px 0 10px}
+  .pillar p{font-size:13.5px;color:var(--ink-soft)}
+
+  /* ===== EDITORIAL SPLIT (reusable) ===== */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+  .split.flip .split-img{order:2}
+  .split-img{position:relative;min-height:600px;overflow:hidden}
+  .split-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .split-txt{display:flex;flex-direction:column;justify-content:center;padding:110px 90px}
+  .split-txt h2{font-size:clamp(38px,3.8vw,62px);font-weight:300;margin:20px 0 22px;letter-spacing:-0.01em}
+  .split-txt h2 em{font-style:italic;color:var(--gold)}
+  .split-txt p{color:var(--ink-soft);font-size:15.5px;margin-bottom:30px;max-width:420px}
+
+  /* concern index list */
+  .idx{list-style:none;margin:8px 0 34px;border-top:1px solid var(--line)}
+  .idx a{display:flex;justify-content:space-between;align-items:center;
+    padding:18px 0;border-bottom:1px solid var(--line);transition:padding .3s ease,color .3s ease}
+  .idx a:hover{padding-left:14px;color:var(--gold)}
+  .idx .ix-name{font-family:'Cormorant Garamond',serif;font-size:24px}
+  .idx .ix-arrow{font-size:12px;color:var(--gold)}
+
+  /* ===== COLLECTIONS ===== */
+  .collections{background:var(--cream-2)}
+  .coll-list{margin-top:60px;border-top:1px solid var(--line-gold)}
+  .coll{display:grid;grid-template-columns:80px 1fr auto auto;gap:40px;align-items:center;
+    padding:40px 14px;border-bottom:1px solid var(--line-gold);transition:background .35s ease}
+  .coll:hover{background:rgba(169,128,63,.07)}
+  .coll .c-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:32px;color:var(--gold)}
+  .coll .c-main h3{font-size:34px;font-weight:400;letter-spacing:.06em}
+  .coll .c-main p{font-size:13px;color:var(--ink-soft);font-style:italic;
+    font-family:'Cormorant Garamond';font-size:16px}
+  .coll .c-price{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--ink)}
+  .coll .c-go{font-size:18px;color:var(--gold)}
+  @media(min-width:861px){.coll:hover .c-go{transform:translateX(8px)}}
+  .coll .c-go{transition:transform .3s ease}
+
+  /* ===== QUIZ INVITE ===== */
+  .invite{background:var(--mocha);color:var(--light);text-align:center;position:relative}
+  .invite .kicker{color:var(--gold-lt)}
+  .invite h2{font-size:clamp(40px,4.6vw,78px);font-weight:300;color:var(--light);margin:22px 0}
+  .invite h2 em{font-style:italic;color:var(--gold-lt)}
+  .invite p{color:rgba(243,235,218,.78);max-width:480px;margin:0 auto 40px;font-size:16px}
+  .invite .rule{background:var(--gold-lt)}
+
+  /* ===== LEARN ===== */
+  .learn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:64px}
+  .article .a-img{aspect-ratio:4/5;overflow:hidden;margin-bottom:24px}
+  .article .a-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+  .article:hover .a-img img{transform:scale(1.05)}
+  .article .a-cat{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .article h3{font-size:27px;font-weight:400;margin:10px 0 10px;line-height:1.2}
+  .article p{font-size:14px;color:var(--ink-soft);margin-bottom:16px}
+
+  /* ===== EXPERT STATEMENT ===== */
+  .expert{background:var(--taupe);color:var(--light);text-align:center}
+  .expert .kicker{color:var(--gold-lt)}
+  .expert blockquote{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;
+    font-size:clamp(28px,3.4vw,50px);line-height:1.36;max-width:860px;margin:24px auto 30px;color:var(--light)}
+  .expert blockquote em{font-style:normal;color:var(--gold-lt)}
+  .expert .e-sign{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--light-soft)}
+
+  /* ===== NEWSLETTER ===== */
+  .news{background:var(--paper);text-align:center;padding:140px 0}
+  .news h2{font-size:clamp(34px,4vw,58px);font-weight:300;margin:20px 0 14px}
+  .news h2 em{font-style:italic;color:var(--gold)}
+  .news p{color:var(--ink-soft);max-width:420px;margin:0 auto 36px}
+  .news-form{display:flex;max-width:440px;margin:0 auto;border-bottom:1px solid var(--gold)}
+  .news-form input{flex:1;background:none;border:none;font-family:'Outfit';font-size:13px;
+    letter-spacing:.04em;padding:14px 4px;color:var(--ink);outline:none}
+  .news-form input::placeholder{color:var(--ink-soft)}
+  .news-form button{background:none;border:none;cursor:pointer;font-family:'Outfit';font-size:10.5px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--gold);padding:0 8px}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--taupe);color:var(--light);padding:90px 0 40px}
+  .foot-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:48px;
+    padding-bottom:56px;border-bottom:1px solid rgba(202,161,104,.28)}
+  .foot-brand .logo{font-size:30px;color:var(--light);padding-left:.4em;letter-spacing:.4em}
+  .foot-brand p{color:var(--light-soft);font-size:13.5px;max-width:280px;margin-top:18px}
+  .foot-col h4{font-family:'Outfit';font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold-lt);margin-bottom:20px;font-weight:400}
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .foot-col a{font-size:13px;color:var(--light-soft);transition:color .25s}
+  .foot-col a:hover{color:var(--gold-lt)}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:32px;flex-wrap:wrap;gap:12px;
+    font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--light-soft)}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(26px);transition:opacity 1s ease,transform 1s ease}
+  .rv.in{opacity:1;transform:none}
+
+  @media(max-width:980px){
+    .wrap{padding:0 28px}
+    .util{padding:12px 28px}
+    .logo{font-size:38px}
+    .nav-menu a{padding:15px 15px;font-size:10px}
+    .hero-in,.split-txt{padding-left:28px;padding-right:28px}
+    .split{grid-template-columns:1fr}
+    .split.flip .split-img{order:0}
+    .split-img{min-height:420px}
+    .split-txt{padding:80px 28px}
+    .pillars,.learn-grid{grid-template-columns:1fr}
+    .pillar{border-right:none;border-bottom:1px solid var(--line-gold)}
+    .coll{grid-template-columns:50px 1fr auto;gap:20px}
+    .coll .c-price{display:none}
+    .foot-top{grid-template-columns:1fr 1fr}
+    .sec{padding:104px 0}
+  }
+  @media(max-width:560px){
+    .foot-top{grid-template-columns:1fr}
+    .hero-cta{gap:18px}
+  }
+</style>
+</head>
+<body>
+
+<div class="announce">Complimentary samples &amp; shipping over $50 — expert-reviewed skincare</div>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="util">
+    <span>Haute soin · clinically considered</span>
+    <span class="u-right"><a href="#">Search</a><a href="#">Account</a><a href="shop.html">Bag (0)</a></span>
+  </div>
+  <div class="brand-row">
+    <a href="index.html" class="logo">SSKENN<span class="lsub">Skincare</span></a>
+  </div>
+  <nav class="nav-row">
+    <ul class="nav-menu">
+      <li><a href="index.html" class="here">Home</a></li>
+      <li><a href="quiz.html">Skin Quiz</a></li>
+      <li><a href="concerns.html">Skin Concerns</a></li>
+      <li><a href="professionals.html">Professionals</a></li>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero on-dark">
+  <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1500&q=80" alt="Model with healthy, glowing skin">
+  <div class="hero-in">
+    <div class="blk">
+      <span class="kicker">Science · Education · Glow</span>
+      <h1>Skincare that <em>understands</em> your skin.</h1>
+      <p>Personalized routines, expert education, and considered formulas for healthy, glowing skin at every stage.</p>
+      <div class="hero-cta">
+        <a class="btn btn-fill" style="background:var(--gold-lt);border-color:var(--gold-lt);color:var(--mocha)" href="quiz.html">Take the Skin Quiz</a>
+        <a class="tlink" href="shop.html">Shop the Best Sellers</a>
+        <a class="tlink" href="learn.html">Learn Your Skin</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="sec philo">
+  <div class="wrap">
+    <div class="statement rv">
+      <span class="kicker">The SSKENN Approach</span>
+      <h2 style="margin-top:20px">Honest skincare, <em>guided by expertise</em> — never by confusion or fear-based marketing.</h2>
+    </div>
+    <div class="pillars">
+      <div class="pillar rv">
+        <div class="pn">I</div>
+        <h3>Considered Formulas</h3>
+        <p>Clinically grounded, barrier-first, and transparent about every ingredient.</p>
+      </div>
+      <div class="pillar rv">
+        <div class="pn">II</div>
+        <h3>Expert Reviewed</h3>
+        <p>Every piece of guidance is reviewed by licensed skincare professionals.</p>
+      </div>
+      <div class="pillar rv">
+        <div class="pn">III</div>
+        <h3>Made Personal</h3>
+        <p>Routines built around your skin type, goals, and sensitivities — not trends.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP BY SKIN -->
+<section class="split">
+  <div class="split-img rv">
+    <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=900&q=80" alt="Skincare by concern">
+  </div>
+  <div class="split-txt rv">
+    <div class="rule"></div>
+    <span class="kicker">Shop by Skin</span>
+    <h2>Begin with what your skin <em>is asking for</em>.</h2>
+    <ul class="idx">
+      <li><a href="concerns.html"><span class="ix-name">Acne &amp; Breakouts</span><span class="ix-arrow">→</span></a></li>
+      <li><a href="concerns.html"><span class="ix-name">Dark Spots &amp; Uneven Tone</span><span class="ix-arrow">→</span></a></li>
+      <li><a href="concerns.html"><span class="ix-name">Dry &amp; Dehydrated Skin</span><span class="ix-arrow">→</span></a></li>
+      <li><a href="concerns.html"><span class="ix-name">Sensitive Skin</span><span class="ix-arrow">→</span></a></li>
+      <li><a href="concerns.html"><span class="ix-name">Aging &amp; Fine Lines</span><span class="ix-arrow">→</span></a></li>
+    </ul>
+    <a class="tlink" href="concerns.html">View all skin concerns</a>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="sec collections">
+  <div class="wrap">
+    <div class="center rv" style="max-width:560px;margin:0 auto">
+      <span class="kicker">The Collections</span>
+      <h2 class="display">Four lines. <em>Every skin story.</em></h2>
+      <p class="body-soft">Science-backed formulas, intentional ingredients, visible results.</p>
+    </div>
+    <div class="coll-list">
+      <a class="coll rv" href="shop.html">
+        <span class="c-num">I</span>
+        <div class="c-main"><h3>ESSENTIALS</h3><p>Everyday basics · gentle · simple routines</p></div>
+        <span class="c-price">$12 – $28</span><span class="c-go">→</span>
+      </a>
+      <a class="coll rv" href="shop.html">
+        <span class="c-num">II</span>
+        <div class="c-main"><h3>CLINICAL</h3><p>Targeted treatments · visible results</p></div>
+        <span class="c-price">$28 – $68</span><span class="c-go">→</span>
+      </a>
+      <a class="coll rv" href="shop.html">
+        <span class="c-num">III</span>
+        <div class="c-main"><h3>RITUAL</h3><p>Luxury rituals · indulgent · transformative</p></div>
+        <span class="c-price">$68 – $165</span><span class="c-go">→</span>
+      </a>
+      <a class="coll rv" href="shop.html">
+        <span class="c-num">IV</span>
+        <div class="c-main"><h3>SEOUL</h3><p>Layered hydration · glow · glass skin</p></div>
+        <span class="c-price">$18 – $62</span><span class="c-go">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ INVITE -->
+<section class="sec invite on-dark">
+  <div class="wrap rv">
+    <div class="rule" style="margin:0 auto 22px"></div>
+    <span class="kicker">The Skin Quiz</span>
+    <h2>Not sure where to <em>start</em>?</h2>
+    <p>Answer a few questions about your skin type, goals, and sensitivities — and we'll compose a routine that fits you.</p>
+    <a class="btn btn-out" href="quiz.html">Begin the Quiz</a>
+  </div>
+</section>
+
+<!-- LEARN -->
+<section class="sec">
+  <div class="wrap">
+    <div class="center rv" style="max-width:560px;margin:0 auto">
+      <span class="kicker">The Education Hub</span>
+      <h2 class="display">Learn skincare, <em>minus the noise</em>.</h2>
+      <p class="body-soft">Ingredient guides, routine building, and honest articles — written to teach, never to scare.</p>
+    </div>
+    <div class="learn-grid">
+      <a class="article rv" href="learn.html">
+        <div class="a-img"><img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&q=80" alt="Ingredients library"></div>
+        <span class="a-cat">Ingredients Library</span>
+        <h3>Know exactly what you're using</h3>
+        <p>Niacinamide, retinol, vitamin C and more — explained in plain language.</p>
+        <span class="tlink">Explore the library</span>
+      </a>
+      <a class="article rv" href="learn.html">
+        <div class="a-img"><img src="https://images.unsplash.com/photo-1620916297612-83a4361f8b3a?w=600&q=80" alt="Routine guides"></div>
+        <span class="a-cat">Routine Guides</span>
+        <h3>Build a routine for your level</h3>
+        <p>Beginner to advanced — clear morning and evening frameworks.</p>
+        <span class="tlink">View routine guides</span>
+      </a>
+      <a class="article rv" href="learn.html">
+        <div class="a-img"><img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=600&q=80" alt="The journal"></div>
+        <span class="a-cat">The Journal</span>
+        <h3>Skincare myths, retired</h3>
+        <p>Honest, professionally reviewed articles on the science of skin.</p>
+        <span class="tlink">Read the journal</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERT STATEMENT -->
+<section class="sec expert on-dark">
+  <div class="wrap rv">
+    <span class="kicker">Dermatologist &amp; Esthetician Reviewed</span>
+    <blockquote>"Our educational content is reviewed by licensed skincare professionals — so you can make <em>informed choices</em>, without confusion or fear."</blockquote>
+    <div class="e-sign">The SSKENN Professional Panel</div>
+    <div style="margin-top:34px"><a class="btn btn-out" href="professionals.html">Meet Our Experts</a></div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="news">
+  <div class="wrap rv">
+    <span class="kicker">Le Cercle SSKENN</span>
+    <h2>Skincare that <em>makes sense</em>, in your inbox.</h2>
+    <p>Expert-reviewed guides and early access to new formulas — never fear-based marketing.</p>
+    <div class="news-form">
+      <input type="email" placeholder="Your email address" aria-label="Email address">
+      <button onclick="this.textContent='Received'">Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="logo">SSKENN</span>
+        <p>Personalized routines, honest education, and barrier-first formulas for healthy, glowing skin at every stage.</p>
+      </div>
+      <div class="foot-col"><h4>Shop</h4>
+        <ul><li><a href="shop.html">All Products</a></li><li><a href="shop.html">Cleansers</a></li>
+          <li><a href="shop.html">Serums</a></li><li><a href="shop.html">Moisturizers</a></li>
+          <li><a href="shop.html">Sunscreen</a></li></ul></div>
+      <div class="foot-col"><h4>Discover</h4>
+        <ul><li><a href="concerns.html">Skin Concerns</a></li><li><a href="quiz.html">Skin Quiz</a></li>
+          <li><a href="learn.html">Ingredients Library</a></li><li><a href="learn.html">Routine Guides</a></li>
+          <li><a href="learn.html">The Journal</a></li></ul></div>
+      <div class="foot-col"><h4>The Maison</h4>
+        <ul><li><a href="about.html">Our Story</a></li><li><a href="about.html">Reviews</a></li>
+          <li><a href="professionals.html">Professionals</a></li><li><a href="professionals.html">Consultations</a></li>
+          <li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 SSKENN · sskenn.com</span>
+      <span>Privacy · Terms · Accessibility</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting){
+    setTimeout(()=>e.target.classList.add('in'),(i%3)*110);io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
