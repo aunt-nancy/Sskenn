@@ -122,6 +122,20 @@
     cursor:pointer;transition:all .35s ease}
   .q-restart:hover{background:var(--ink);color:var(--light)}
 
+  /* Skin Routine Review upsell (after quiz result) */
+  .q-cta{margin-top:48px;padding:50px 50px;background:var(--taupe);color:var(--light);
+    text-align:center;border:1px solid rgba(202,161,104,.32);position:relative}
+  .q-cta::before{content:"";position:absolute;top:14px;left:14px;right:14px;bottom:14px;
+    border:1px solid rgba(202,161,104,.2);pointer-events:none}
+  .q-cta .kicker{color:var(--gold-lt);position:relative;z-index:2;display:block;margin-bottom:14px}
+  .q-cta h3{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.2vw,40px);font-weight:300;
+    color:var(--light);margin-bottom:14px;position:relative;z-index:2;line-height:1.18}
+  .q-cta h3 em{font-style:italic;color:var(--gold-lt)}
+  .q-cta p{color:var(--light-soft);font-size:14px;max-width:520px;margin:0 auto 28px;
+    position:relative;z-index:2;line-height:1.7}
+  .q-cta .btn{position:relative;z-index:2;background:var(--gold);color:var(--light);border-color:var(--gold)}
+  .q-cta .btn:hover{background:transparent;color:var(--gold-lt);border-color:var(--gold-lt)}
+
   /* FOOTER */
   footer{background:var(--taupe);color:var(--light);padding:90px 0 40px}
   .foot-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:48px;
@@ -169,6 +183,8 @@
   @media(max-width:560px){
     .routine{grid-template-columns:1fr}
     .foot-top{grid-template-columns:1fr}
+    .q-cta{padding:34px 24px}
+    .q-cta::before{display:none}
   }
 </style>
 </head>
@@ -202,7 +218,7 @@
 <section class="page-head">
   <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1500&q=80" alt="Skincare consultation">
   <div class="ph-in">
-    <span class="kicker">Find Your Routine</span>
+    <span class="kicker">Free · 3 Minutes</span>
     <h1>Skin Quiz</h1>
     <p>Five questions about your skin — and a routine composed around the answers.</p>
     <div class="ph-rule"></div>
@@ -291,6 +307,13 @@
         <div class="q-actions">
           <a class="btn btn-fill" href="shop.html">Shop This Routine</a>
           <button class="q-restart" id="qRestart">Retake the Quiz</button>
+        </div>
+
+        <div class="q-cta">
+          <span class="kicker">Take It Further</span>
+          <h3>Want a personalized routine? <em>Book a Skin Routine Review</em>.</h3>
+          <p>A one-to-one session with a licensed skincare professional who reviews your current products, builds custom morning and evening routines, and sends a follow-up summary by email.</p>
+          <a class="btn" href="consultants.html#routine-review">Book Skin Routine Review</a>
         </div>
       </div>
 

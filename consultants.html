@@ -81,6 +81,34 @@
   .chip:hover{border-color:var(--gold);color:var(--ink)}
   .chip.on{background:var(--ink);color:var(--light);border-color:var(--ink)}
 
+  /* SKIN ROUTINE REVIEW (signature service) */
+  .routine-review{padding:90px 0;background:var(--paper)}
+  .rr-block{background:var(--light);border:1px solid var(--line-gold);padding:64px 64px;
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;position:relative}
+  .rr-block::before{content:"";position:absolute;top:14px;left:14px;right:14px;bottom:14px;
+    border:1px solid var(--line-gold);pointer-events:none;opacity:.6}
+  .rr-left{position:relative;z-index:2}
+  .rr-left .kicker{display:block;margin-bottom:14px}
+  .rr-left h2{font-size:clamp(36px,4.4vw,58px);font-weight:300;margin-bottom:20px;letter-spacing:-0.01em}
+  .rr-left h2 em{font-style:italic;color:var(--gold)}
+  .rr-lede{color:var(--ink-soft);font-size:15px;margin-bottom:30px;max-width:440px;line-height:1.75}
+  .rr-price{margin-bottom:24px}
+  .rr-price-fig{font-family:'Cormorant Garamond',serif;font-size:54px;color:var(--gold);line-height:1;font-weight:400}
+  .rr-price-fig small{display:block;font-family:'Outfit';font-size:10px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-soft);margin-top:6px;font-weight:400}
+  .rr-fineprint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13.5px;color:var(--ink-soft);
+    margin-top:16px}
+  .rr-right{padding-left:34px;border-left:1px solid var(--line-gold);position:relative;z-index:2}
+  .rr-right h4{font-family:'Outfit',sans-serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:24px;font-weight:400}
+  .rr-list{list-style:none;display:flex;flex-direction:column;gap:18px}
+  .rr-list li{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+  .rr-num{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);
+    font-style:italic;line-height:1.2;min-width:30px}
+  .rr-list strong{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--ink);
+    display:block;margin-bottom:3px;line-height:1.3}
+  .rr-list li div{font-size:13px;color:var(--ink-soft);line-height:1.65}
+
   /* CONSULTANT GRID */
   .c-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
   .c-card{background:var(--light);border:1px solid var(--line-gold);padding:36px 34px;
@@ -141,12 +169,17 @@
     .logo{font-size:38px}
     .c-grid{grid-template-columns:1fr}
     .market{padding:70px 0 90px}
+    .routine-review{padding:60px 0}
+    .rr-block{grid-template-columns:1fr;padding:46px 36px;gap:36px}
+    .rr-right{padding-left:0;padding-top:36px;border-left:none;border-top:1px solid var(--line-gold)}
     .foot-top{grid-template-columns:1fr 1fr}
   }
   @media(max-width:560px){
     .foot-top{grid-template-columns:1fr}
     .c-card{padding:28px 24px}
     .c-foot{flex-direction:column;align-items:flex-start;gap:14px}
+    .rr-block{padding:32px 24px}
+    .rr-block::before{display:none}
   }
 </style>
 </head>
@@ -181,6 +214,34 @@
     <h1>Find Your Consultant</h1>
     <p>Book a one-to-one session with a licensed skincare professional, matched to your concern.</p>
     <div class="ph-rule"></div>
+  </div>
+</section>
+
+<section class="routine-review" id="routine-review">
+  <div class="wrap">
+    <div class="rr-block rv">
+      <div class="rr-left">
+        <span class="kicker">Our Signature Service</span>
+        <h2>The Skin Routine <em>Review</em></h2>
+        <p class="rr-lede">A one-to-one session with a licensed skincare professional who reviews everything you're using now, builds your morning and evening routines, and sends a follow-up summary by email.</p>
+        <div class="rr-price">
+          <div class="rr-price-fig">$95<small>60-minute video session</small></div>
+        </div>
+        <a class="btn btn-fill" href="#book-review">Book Skin Routine Review</a>
+        <p class="rr-fineprint">Conducted by video call · written summary delivered within 48 hours</p>
+      </div>
+      <div class="rr-right">
+        <h4>What's included</h4>
+        <ul class="rr-list">
+          <li><span class="rr-num">01</span><div><strong>Skin concern intake form</strong><div>Tell us about your skin in advance so we make the most of every minute.</div></div></li>
+          <li><span class="rr-num">02</span><div><strong>Current product review</strong><div>We'll look at everything you're using now — what to keep, what to retire.</div></div></li>
+          <li><span class="rr-num">03</span><div><strong>Recommended morning routine</strong><div>A step-by-step morning routine built around your skin's actual needs.</div></div></li>
+          <li><span class="rr-num">04</span><div><strong>Recommended evening routine</strong><div>Including actives, layering order, and when to introduce each one.</div></div></li>
+          <li><span class="rr-num">05</span><div><strong>Personalized product suggestions</strong><div>SSKENN and third-party recommendations — only what you actually need.</div></div></li>
+          <li><span class="rr-num">06</span><div><strong>Follow-up email summary</strong><div>Everything in writing, sent within 48 hours of your session.</div></div></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
