@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Become a Consultant — SSKENN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#e6dbc5;--cream-2:#ddcfb4;--paper:#efe7d6;--mocha:#564231;--taupe:#3c3026;
+    --ink:#2b2218;--ink-soft:#776857;--light:#f3ebda;--light-soft:#c2b298;
+    --gold:#a9803f;--gold-lt:#caa168;--line:rgba(43,34,24,.2);--line-gold:rgba(169,128,63,.4);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:'Outfit',sans-serif;
+    font-weight:300;line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:400;line-height:1.12;color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--gold);color:var(--light)}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 50px}
+  .kicker{font-size:10.5px;letter-spacing:.4em;text-transform:uppercase;font-weight:400;color:var(--gold)}
+  .btn{display:inline-block;padding:15px 32px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    font-weight:400;cursor:pointer;transition:all .35s ease;border:1px solid var(--ink);background:transparent;
+    font-family:'Outfit',sans-serif}
+  .btn-fill{background:var(--ink);color:var(--light)}
+  .btn-fill:hover{background:transparent;color:var(--ink)}
+
+  .announce{background:var(--taupe);color:var(--light-soft);text-align:center;
+    font-size:10px;letter-spacing:.28em;text-transform:uppercase;padding:11px 0}
+  header.site{background:var(--cream);border-bottom:1px solid var(--line-gold)}
+  .util{max-width:1240px;margin:0 auto;padding:12px 50px;display:flex;justify-content:space-between;
+    font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+  .util a:hover{color:var(--gold)}
+  .util .u-right{display:flex;gap:26px}
+  .brand-row{text-align:center;padding:34px 50px 30px;position:relative}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:50px;letter-spacing:.52em;
+    font-weight:500;color:var(--ink);padding-left:.52em}
+  .logo .lsub{display:block;font-family:'Outfit';font-size:9px;letter-spacing:.62em;
+    color:var(--gold);margin-top:6px;font-weight:400;padding-left:.12em}
+  .nav-row{border-top:1px solid var(--line-gold)}
+  .nav-menu{max-width:1240px;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap;list-style:none}
+  .nav-menu a{display:block;padding:20px 26px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:400;color:var(--ink);transition:color .28s ease}
+  .nav-menu a:hover,.nav-menu a.here{color:var(--gold)}
+  .navtoggle{display:none;position:absolute;top:50%;right:24px;transform:translateY(-50%);
+    width:40px;height:40px;background:none;border:none;cursor:pointer;padding:8px;z-index:130}
+  .navtoggle span{display:block;width:24px;height:1.5px;background:var(--ink);margin:5px auto;
+    transition:transform .32s ease,opacity .25s ease}
+  body.nav-open .navtoggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  body.nav-open .navtoggle span:nth-child(2){opacity:0}
+  body.nav-open .navtoggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+  /* PAGE HEADER */
+  .page-head{position:relative;height:48vh;min-height:360px;display:flex;align-items:center;
+    justify-content:center;text-align:center;overflow:hidden}
+  .page-head img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .page-head::after{content:"";position:absolute;inset:0;background:rgba(38,30,21,.6)}
+  .page-head .ph-in{position:relative;z-index:2;padding:0 30px}
+  .page-head .kicker{color:var(--gold-lt)}
+  .page-head h1{font-size:clamp(46px,5.6vw,90px);font-weight:300;color:var(--light);
+    margin-top:14px;letter-spacing:-0.01em}
+  .page-head p{color:rgba(243,235,218,.85);max-width:520px;margin:14px auto 0;font-size:15px}
+  .ph-rule{width:46px;height:1px;background:var(--gold-lt);margin:20px auto 0}
+
+  /* SECTIONS */
+  .sec{padding:100px 0}
+  .sec-head{text-align:center;max-width:620px;margin:0 auto 56px}
+  .sec-head .rule{width:46px;height:1px;background:var(--gold);margin:0 auto 18px}
+  .sec-head h2{font-size:clamp(34px,4vw,56px);font-weight:300;margin:14px 0 14px;letter-spacing:-0.01em}
+  .sec-head h2 em{font-style:italic;color:var(--gold)}
+  .sec-head p{color:var(--ink-soft);font-size:15.5px}
+
+  /* WHO IT'S FOR */
+  .who{background:var(--paper)}
+  .who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .who-card{background:var(--light);border:1px solid var(--line-gold);padding:42px 38px;text-align:center}
+  .who-card .who-num{font-family:'Cormorant Garamond',serif;font-size:46px;color:var(--gold);
+    font-style:italic;line-height:1;margin-bottom:18px;font-weight:300}
+  .who-card h3{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;
+    margin-bottom:12px;line-height:1.2}
+  .who-card p{font-size:14px;color:var(--ink-soft);line-height:1.7}
+
+  /* BENEFITS */
+  .benefits{background:var(--cream)}
+  .b-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+  .b-card{background:var(--light);border:1px solid var(--line-gold);padding:42px 38px;
+    transition:border-color .4s ease,transform .4s ease}
+  .b-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+  .b-icon{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);font-style:italic;
+    line-height:1;margin-bottom:18px}
+  .b-card h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;
+    margin-bottom:10px;line-height:1.2}
+  .b-card h3 em{font-style:italic;color:var(--gold)}
+  .b-card p{font-size:13.5px;color:var(--ink-soft);line-height:1.75}
+
+  /* EARNINGS */
+  .earnings{background:var(--taupe);color:var(--light)}
+  .earnings .sec-head h2{color:var(--light)}
+  .earnings .sec-head .kicker{color:var(--gold-lt)}
+  .earnings .sec-head p{color:var(--light-soft)}
+  .e-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(202,161,104,.3);
+    background:rgba(202,161,104,.03)}
+  .e-cell{padding:54px 40px;text-align:center;border-right:1px solid rgba(202,161,104,.3);
+    border-bottom:1px solid rgba(202,161,104,.3)}
+  .e-cell:nth-child(3n){border-right:none}
+  .e-cell:nth-last-child(-n+3){border-bottom:none}
+  .e-cell .kicker{color:var(--gold-lt);display:block;margin-bottom:14px}
+  .e-fig{font-family:'Cormorant Garamond',serif;font-size:62px;color:var(--gold-lt);
+    line-height:1;font-weight:300;margin-bottom:10px}
+  .e-cell h4{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:400;color:var(--light);
+    margin-bottom:10px;line-height:1.2}
+  .e-cell p{font-size:13px;color:var(--light-soft);line-height:1.7}
+
+  /* TRAINING */
+  .training{background:var(--paper)}
+  .train-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .train-img{aspect-ratio:5/6;overflow:hidden;border:1px solid var(--line-gold)}
+  .train-img img{width:100%;height:100%;object-fit:cover}
+  .train-text .kicker{display:block;margin-bottom:14px}
+  .train-text h2{font-size:clamp(32px,3.6vw,48px);font-weight:300;margin-bottom:22px;letter-spacing:-0.01em}
+  .train-text h2 em{font-style:italic;color:var(--gold)}
+  .train-list{list-style:none;display:flex;flex-direction:column;gap:18px;margin-top:24px}
+  .train-list li{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
+    padding-bottom:18px;border-bottom:1px solid var(--line-gold)}
+  .train-list li:last-child{border-bottom:none;padding-bottom:0}
+  .train-list .tn{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);
+    font-style:italic;line-height:1.2;min-width:30px}
+  .train-list strong{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--ink);
+    display:block;margin-bottom:3px;line-height:1.3}
+  .train-list .desc{display:block;font-size:13px;color:var(--ink-soft);line-height:1.65}
+
+  /* APPLICATION FORM */
+  .apply{background:var(--cream)}
+  .form-wrap{max-width:780px;margin:0 auto;background:var(--light);border:1px solid var(--line-gold);
+    padding:56px 60px}
+  .form-q{margin-bottom:30px;padding-bottom:26px;border-bottom:1px solid var(--line-gold)}
+  .form-q:last-of-type{border-bottom:none;padding-bottom:0;margin-bottom:30px}
+  .form-q-label{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);
+    display:block;margin-bottom:6px;line-height:1.3}
+  .form-q-hint{font-size:12px;color:var(--ink-soft);font-style:italic;margin-bottom:16px;
+    font-family:'Cormorant Garamond',serif}
+  .form-q-num{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);
+    font-size:18px;margin-right:8px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  input[type=text],input[type=email],textarea,select{width:100%;padding:13px 16px;
+    font-family:'Outfit',sans-serif;font-size:14px;font-weight:300;color:var(--ink);
+    background:var(--paper);border:1px solid var(--line-gold);outline:none;
+    transition:border-color .25s ease}
+  input:focus,textarea:focus,select:focus{border-color:var(--gold)}
+  textarea{min-height:90px;resize:vertical;font-family:'Outfit',sans-serif}
+  .radio-list,.check-list{display:flex;flex-direction:column;gap:10px}
+  .check-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .radio-list label,.check-list label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;
+    font-size:14px;color:var(--ink);padding:11px 14px;border:1px solid var(--line-gold);
+    background:var(--paper);transition:border-color .25s ease,background .25s ease}
+  .radio-list label:hover,.check-list label:hover{border-color:var(--gold)}
+  .radio-list input,.check-list input{accent-color:var(--gold);margin-top:3px;flex:none}
+  .form-submit{display:flex;justify-content:flex-end;margin-top:14px}
+  .form-thanks{display:none;background:var(--taupe);color:var(--light);text-align:center;
+    padding:60px 40px;border:1px solid rgba(202,161,104,.3)}
+  .form-thanks.show{display:block}
+  .form-thanks h3{font-family:'Cormorant Garamond',serif;font-size:38px;color:var(--light);
+    margin-bottom:14px;font-weight:300}
+  .form-thanks h3 em{font-style:italic;color:var(--gold-lt)}
+  .form-thanks p{color:var(--light-soft);max-width:420px;margin:0 auto;font-size:14.5px}
+  .honey{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+
+  /* FOOTER */
+  footer{background:var(--taupe);color:var(--light);padding:90px 0 40px}
+  .foot-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:48px;
+    padding-bottom:56px;border-bottom:1px solid rgba(202,161,104,.28)}
+  .foot-brand .logo{font-size:30px;color:var(--light);padding-left:.4em;letter-spacing:.4em}
+  .foot-brand p{color:var(--light-soft);font-size:13.5px;max-width:280px;margin-top:18px}
+  .foot-col h4{font-family:'Outfit';font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold-lt);margin-bottom:20px;font-weight:400}
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .foot-col a{font-size:13px;color:var(--light-soft);transition:color .25s}
+  .foot-col a:hover{color:var(--gold-lt)}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:32px;flex-wrap:wrap;gap:12px;
+    font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--light-soft)}
+
+  .rv{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+  .rv.in{opacity:1;transform:none}
+
+  @media(max-width:820px){
+    .util{display:none}
+    .navtoggle{display:block}
+    .brand-row{padding:24px 26px}
+    .nav-row{position:fixed;inset:0;background:var(--cream);z-index:120;border:none;
+      display:flex;align-items:center;justify-content:center;
+      opacity:0;visibility:hidden;transition:opacity .34s ease}
+    body.nav-open .nav-row{opacity:1;visibility:visible}
+    body.nav-open{overflow:hidden}
+    .nav-menu{flex-direction:column;gap:2px;width:100%;max-width:340px}
+    .nav-menu a{padding:15px 20px;font-size:15px;letter-spacing:.22em;text-align:center}
+  }
+  @media(max-width:980px){
+    .wrap{padding:0 28px}
+    .logo{font-size:38px}
+    .sec{padding:70px 0}
+    .who-grid,.b-grid{grid-template-columns:1fr}
+    .e-grid{grid-template-columns:1fr}
+    .e-cell{border-right:none}
+    .e-cell:not(:last-child){border-bottom:1px solid rgba(202,161,104,.3)}
+    .train-grid{grid-template-columns:1fr;gap:40px}
+    .train-img{aspect-ratio:4/3}
+    .form-wrap{padding:42px 32px}
+    .form-row{grid-template-columns:1fr}
+    .check-list{grid-template-columns:1fr}
+    .foot-top{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:560px){
+    .form-wrap{padding:32px 22px}
+    .foot-top{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="announce">Complimentary samples &amp; shipping over $50 — expert-reviewed skincare</div>
+<header class="site">
+  <div class="util">
+    <span>Haute soin · clinically considered</span>
+    <span class="u-right"><a href="#">Search</a><a href="account.html">Account</a><a href="shop.html">Bag (0)</a></span>
+  </div>
+  <div class="brand-row">
+    <a href="index.html" class="logo">SSKENN<span class="lsub">Skincare</span></a>
+    <button class="navtoggle" aria-label="Open menu" onclick="document.body.classList.toggle('nav-open')"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="nav-row">
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="quiz.html">Skin Quiz</a></li>
+      <li><a href="concerns.html">Skin Concerns</a></li>
+      <li><a href="consultants.html">Consultants</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-head">
+  <img src="https://images.unsplash.com/photo-1581349437898-cebbe9831942?w=1500&q=80" alt="Become a consultant">
+  <div class="ph-in">
+    <span class="kicker">Build a Skincare Practice</span>
+    <h1>Become a Consultant</h1>
+    <p>Join the SSKENN consultant network — licensed professionals helping clients build healthier, more confident skin journeys.</p>
+    <div class="ph-rule"></div>
+  </div>
+</section>
+
+<section class="sec who">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="rule"></div>
+      <span class="kicker">Who It's For</span>
+      <h2>The right fit for <em>your practice</em>.</h2>
+      <p>SSKENN consultants come from many backgrounds — what they share is a real love for skincare and a commitment to honest, personalized care.</p>
+    </div>
+    <div class="who-grid">
+      <div class="who-card rv">
+        <div class="who-num">01</div>
+        <h3>Licensed Estheticians</h3>
+        <p>Building or expanding a virtual practice alongside in-person work — bring your clients with you.</p>
+      </div>
+      <div class="who-card rv">
+        <div class="who-num">02</div>
+        <h3>Dermatology Professionals</h3>
+        <p>Cosmetic dermatologists, dermatology nurses, and PAs offering skincare guidance outside the clinic.</p>
+      </div>
+      <div class="who-card rv">
+        <div class="who-num">03</div>
+        <h3>Educators &amp; Creators</h3>
+        <p>Skincare educators, content creators, and certified coaches turning expertise into real consultations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec benefits">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="rule"></div>
+      <span class="kicker">Why Join SSKENN</span>
+      <h2>The benefits of <em>our network</em>.</h2>
+    </div>
+    <div class="b-grid">
+      <div class="b-card rv">
+        <div class="b-icon">✦</div>
+        <h3>How You <em>Earn</em></h3>
+        <p>Keep 80% of every consultation fee. Earn additional commission on every product your clients order. Get paid bi-monthly via direct deposit.</p>
+      </div>
+      <div class="b-card rv">
+        <div class="b-icon">✦</div>
+        <h3>Training <em>Provided</em></h3>
+        <p>Free onboarding course covering platform tools, virtual consultation best practices, and the SSKENN brand voice. Continuing-ed masterclasses monthly.</p>
+      </div>
+      <div class="b-card rv">
+        <div class="b-icon">✦</div>
+        <h3>Flexible <em>Schedule</em></h3>
+        <p>Set your own availability and rates within range. Take a week off, take a month off — you control your calendar entirely.</p>
+      </div>
+      <div class="b-card rv">
+        <div class="b-icon">✦</div>
+        <h3>Product <em>Discount</em></h3>
+        <p>40% consultant discount on all SSKENN products, both for personal use and for kitting your client recommendations.</p>
+      </div>
+      <div class="b-card rv">
+        <div class="b-icon">✦</div>
+        <h3>Marketing <em>Support</em></h3>
+        <p>Your consultant profile in our marketplace, a featured slot in our monthly newsletter, and shared social content you can repost.</p>
+      </div>
+      <div class="b-card rv">
+        <div class="b-icon">✦</div>
+        <h3>Consultant <em>Community</em></h3>
+        <p>Private community for SSKENN consultants — peer support, case studies, and ingredient research shared between sessions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec earnings">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="rule"></div>
+      <span class="kicker">Commission Structure</span>
+      <h2>Transparent <em>earnings</em>.</h2>
+      <p>What you keep — clearly laid out, no hidden cuts.</p>
+    </div>
+    <div class="e-grid">
+      <div class="e-cell rv">
+        <span class="kicker">Consultations</span>
+        <div class="e-fig">80%</div>
+        <h4>of every session fee</h4>
+        <p>SSKENN takes a 20% platform fee that covers payments, scheduling, video calls, and the marketplace listing.</p>
+      </div>
+      <div class="e-cell rv">
+        <span class="kicker">Product Referrals</span>
+        <div class="e-fig">15%</div>
+        <h4>commission on sales</h4>
+        <p>Earn 15% on every SSKENN product a client orders through your referral code or routine recommendation.</p>
+      </div>
+      <div class="e-cell rv">
+        <span class="kicker">Glow Program</span>
+        <div class="e-fig">$400</div>
+        <h4>per 90-day client</h4>
+        <p>Lead consultants on the Consultant-Led Glow Program receive $400 of the $599 program fee per client.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec training">
+  <div class="wrap">
+    <div class="train-grid">
+      <div class="train-img rv">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80" alt="Training">
+      </div>
+      <div class="train-text rv">
+        <span class="kicker">Training Provided</span>
+        <h2>You bring the <em>expertise</em>, we bring the <em>platform</em>.</h2>
+        <p style="color:var(--ink-soft);font-size:14.5px">A free 8-hour onboarding program plus ongoing education — so you're ready from day one and growing every month.</p>
+        <ul class="train-list">
+          <li><span class="tn">01</span><div><strong>Onboarding course</strong><span class="desc">Eight-hour self-paced course covering platform tools, consultation flow, and brand voice.</span></div></li>
+          <li><span class="tn">02</span><div><strong>Virtual consultation skills</strong><span class="desc">Best practices for video sessions, building rapport, and structured client follow-up.</span></div></li>
+          <li><span class="tn">03</span><div><strong>Monthly masterclasses</strong><span class="desc">Live deep dives on actives, ingredients, and emerging research — counts toward CE credit.</span></div></li>
+          <li><span class="tn">04</span><div><strong>Brand &amp; ethics guidelines</strong><span class="desc">How to recommend honestly, when to refer out, and how to keep clients' trust over years.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec apply" id="apply">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="rule"></div>
+      <span class="kicker">Apply to Join</span>
+      <h2>Consultant <em>application</em>.</h2>
+      <p>We review applications weekly. Most candidates hear back within 5–7 business days.</p>
+    </div>
+
+    <div class="form-wrap rv" id="formWrap">
+      <form name="consultant-application" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="applyForm">
+        <input type="hidden" name="form-name" value="consultant-application">
+        <p class="honey"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+        <div class="form-q">
+          <span class="form-q-label">Your details</span>
+          <span class="form-q-hint">We'll use these to follow up about your application.</span>
+          <div class="form-row">
+            <input type="text" name="full-name" placeholder="Full name" required>
+            <input type="email" name="email" placeholder="Email address" required>
+          </div>
+          <div class="form-row" style="margin-top:12px">
+            <input type="text" name="location" placeholder="Location (city, country)">
+            <input type="text" name="phone" placeholder="Phone (optional)">
+          </div>
+        </div>
+
+        <div class="form-q">
+          <label class="form-q-label"><span class="form-q-num">01.</span>Are you a licensed esthetician or currently training in skincare?</label>
+          <div class="radio-list">
+            <label><input type="radio" name="q1-licensed" value="Licensed">Yes — currently licensed</label>
+            <label><input type="radio" name="q1-licensed" value="Training">Currently in training or certification</label>
+            <label><input type="radio" name="q1-licensed" value="Neither">Neither, but I have other relevant experience</label>
+          </div>
+        </div>
+
+        <div class="form-q">
+          <label class="form-q-label"><span class="form-q-num">02.</span>Do you have beauty, wellness, or customer service experience?</label>
+          <span class="form-q-hint">Briefly describe your background — roles, years, anything skincare-adjacent.</span>
+          <textarea name="q2-experience" placeholder="e.g. 4 years as a licensed esthetician, 2 years front desk at a medspa…"></textarea>
+        </div>
+
+        <div class="form-q">
+          <label class="form-q-label"><span class="form-q-num">03.</span>Are you comfortable doing virtual consultations?</label>
+          <div class="radio-list">
+            <label><input type="radio" name="q3-virtual" value="Yes">Yes — I've done video consultations before</label>
+            <label><input type="radio" name="q3-virtual" value="Open">Open to it, though new to video</label>
+            <label><input type="radio" name="q3-virtual" value="Prefer">Prefer in-person, but willing to try</label>
+          </div>
+        </div>
+
+        <div class="form-q">
+          <label class="form-q-label"><span class="form-q-num">04.</span>What skin concerns are you most confident discussing?</label>
+          <span class="form-q-hint">Select all that apply.</span>
+          <div class="check-list">
+            <label><input type="checkbox" name="q4-concerns" value="Acne-Prone">Acne-Prone</label>
+            <label><input type="checkbox" name="q4-concerns" value="Dark Spots">Dark Spots</label>
+            <label><input type="checkbox" name="q4-concerns" value="Mature Skin">Mature Skin</label>
+            <label><input type="checkbox" name="q4-concerns" value="Sensitive Skin">Sensitive Skin</label>
+            <label><input type="checkbox" name="q4-concerns" value="K-Beauty Layering">K-Beauty Layering</label>
+            <label><input type="checkbox" name="q4-concerns" value="Luxury Routines">Luxury Routines</label>
+            <label><input type="checkbox" name="q4-concerns" value="Teen Skincare">Teen Skincare</label>
+            <label><input type="checkbox" name="q4-concerns" value="Makeup Prep">Makeup Prep</label>
+          </div>
+        </div>
+
+        <div class="form-q">
+          <label class="form-q-label"><span class="form-q-num">05.</span>Do you have a social media presence or audience?</label>
+          <div class="radio-list" style="margin-bottom:12px">
+            <label><input type="radio" name="q5-social" value="Yes">Yes — I have an active following</label>
+            <label><input type="radio" name="q5-social" value="Growing">Growing one — small but engaged</label>
+            <label><input type="radio" name="q5-social" value="No">No social presence yet</label>
+          </div>
+          <input type="text" name="q5-handles" placeholder="Optional — handles or links (Instagram, TikTok, YouTube, etc.)">
+        </div>
+
+        <div class="form-q">
+          <label class="form-q-label"><span class="form-q-num">06.</span>Are you interested in product sales, consultations, or both?</label>
+          <div class="radio-list">
+            <label><input type="radio" name="q6-interest" value="Consultations">Consultations only — I want to focus on guiding clients</label>
+            <label><input type="radio" name="q6-interest" value="Product Sales">Product sales only — earn commission on referrals</label>
+            <label><input type="radio" name="q6-interest" value="Both">Both — full consultant + product referral practice</label>
+          </div>
+        </div>
+
+        <div class="form-submit">
+          <button class="btn btn-fill" type="submit">Submit Application</button>
+        </div>
+      </form>
+
+      <div class="form-thanks" id="formThanks">
+        <h3>Application <em>received</em>.</h3>
+        <p>Thank you for applying to the SSKENN consultant network. We review applications weekly and most candidates hear back within five to seven business days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="logo">SSKENN</span>
+        <p>Personalized routines, honest education, and barrier-first formulas for healthy, glowing skin at every stage.</p>
+      </div>
+      <div class="foot-col"><h4>Shop</h4>
+        <ul><li><a href="shop.html">All Products</a></li><li><a href="shop.html">Cleansers</a></li>
+          <li><a href="shop.html">Serums</a></li><li><a href="shop.html">Moisturizers</a></li>
+          <li><a href="shop.html">Sunscreen</a></li></ul></div>
+      <div class="foot-col"><h4>Discover</h4>
+        <ul><li><a href="concerns.html">Skin Concerns</a></li><li><a href="quiz.html">Skin Quiz</a></li>
+          <li><a href="learn.html">Ingredients Library</a></li><li><a href="blog.html">The Journal</a></li>
+          <li><a href="tracker.html">Progress Tracker</a></li></ul></div>
+      <div class="foot-col"><h4>The Maison</h4>
+        <ul><li><a href="about.html">Our Story</a></li><li><a href="consultants.html">Consultants</a></li>
+          <li><a href="membership.html">Membership</a></li><li><a href="become-consultant.html">Become a Consultant</a></li>
+          <li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 SSKENN · sskenn.com</span>
+      <span>Privacy · Terms · Accessibility</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting){
+    setTimeout(()=>e.target.classList.add('in'),(i%3)*90);io.unobserve(e.target);}});},{threshold:.1});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+  // Form: progressive enhancement — show thank-you inline if submission succeeds via fetch
+  document.getElementById('applyForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const form=e.target;
+    const data=new FormData(form);
+    fetch('/',{method:'POST',body:new URLSearchParams(data).toString(),
+      headers:{'Content-Type':'application/x-www-form-urlencoded'}})
+      .then(()=>{form.style.display='none';document.getElementById('formThanks').classList.add('show');
+        window.scrollTo({top:document.getElementById('apply').offsetTop-20,behavior:'smooth'});})
+      .catch(()=>{form.submit();});
+  });
+</script>
+</body>
+</html>
