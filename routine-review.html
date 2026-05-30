@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Skin Routine Consultation — SSKENN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#e6dbc5;--cream-2:#ddcfb4;--paper:#efe7d6;--mocha:#564231;--taupe:#3c3026;
+    --ink:#2b2218;--ink-soft:#776857;--light:#f3ebda;--light-soft:#c2b298;
+    --gold:#a9803f;--gold-lt:#caa168;--line:rgba(43,34,24,.2);--line-gold:rgba(169,128,63,.4);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:'Outfit',sans-serif;
+    font-weight:300;line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:400;line-height:1.12;color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--gold);color:var(--light)}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 50px}
+  .kicker{font-size:10.5px;letter-spacing:.4em;text-transform:uppercase;font-weight:400;color:var(--gold)}
+  .btn{display:inline-block;padding:17px 38px;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;font-weight:400;cursor:pointer;transition:all .4s ease;
+    border:1px solid var(--ink)}
+  .btn-fill{background:var(--ink);color:var(--light);border-color:var(--ink)}
+  .btn-fill:hover{background:transparent;color:var(--ink)}
+  .btn-gold{background:var(--gold);color:var(--light);border-color:var(--gold)}
+  .btn-gold:hover{background:transparent;color:var(--gold)}
+  .on-dark .btn-out{border-color:rgba(243,235,218,.5);color:var(--light)}
+  .on-dark .btn-out:hover{background:var(--light);color:var(--mocha);border-color:var(--light)}
+
+  /* HEADER */
+  .announce{background:var(--taupe);color:var(--light-soft);text-align:center;
+    font-size:10px;letter-spacing:.28em;text-transform:uppercase;padding:11px 0}
+  header.site{background:var(--cream);border-bottom:1px solid var(--line-gold)}
+  .util{max-width:1240px;margin:0 auto;padding:12px 50px;display:flex;justify-content:space-between;
+    font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+  .util a:hover{color:var(--gold)}
+  .util .u-right{display:flex;gap:26px}
+  .brand-row{text-align:center;padding:34px 50px 30px;position:relative}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:50px;letter-spacing:.52em;
+    font-weight:500;color:var(--ink);padding-left:.52em}
+  .logo .lsub{display:block;font-family:'Outfit';font-size:9px;letter-spacing:.62em;
+    color:var(--gold);margin-top:6px;font-weight:400;padding-left:.12em}
+  .nav-row{border-top:1px solid var(--line-gold)}
+  .nav-menu{max-width:1240px;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap;list-style:none}
+  .nav-menu a{display:block;padding:20px 22px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:400;color:var(--ink);transition:color .28s ease}
+  .nav-menu a:hover,.nav-menu a.here{color:var(--gold)}
+  .navtoggle{display:none;position:absolute;top:50%;right:24px;transform:translateY(-50%);
+    width:40px;height:40px;background:none;border:none;cursor:pointer;padding:8px;z-index:130}
+  .navtoggle span{display:block;width:24px;height:1.5px;background:var(--ink);margin:5px auto;
+    transition:transform .32s ease,opacity .25s ease}
+  body.nav-open .navtoggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  body.nav-open .navtoggle span:nth-child(2){opacity:0}
+  body.nav-open .navtoggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+  /* PAGE HEADER */
+  .page-head{background:var(--paper);text-align:center;padding:90px 50px 70px;
+    border-bottom:1px solid var(--line-gold)}
+  .ph-rule{width:46px;height:1px;background:var(--gold);margin:24px auto 22px}
+  .page-head h1{font-size:clamp(40px,5vw,68px);font-weight:300;letter-spacing:-0.01em}
+  .page-head h1 em{font-style:italic;color:var(--gold)}
+  .page-head p{color:var(--ink-soft);font-size:15.5px;max-width:540px;margin:18px auto 0}
+
+  /* TIERS */
+  .tiers{padding:110px 0 60px}
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+  .tier{background:var(--paper);border:1px solid var(--line-gold);
+    padding:50px 36px 44px;display:flex;flex-direction:column;
+    transition:transform .5s ease,box-shadow .5s ease;position:relative}
+  .tier:hover{transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(43,34,24,.18)}
+  .tier.featured{background:var(--mocha);color:var(--light);border-color:var(--gold)}
+  .tier.featured h3{color:var(--light)}
+  .tier.featured .price{color:var(--gold-lt)}
+  .tier.featured .t-blurb{color:rgba(243,235,218,.78)}
+  .tier.featured .t-incl li{color:var(--light)}
+  .tier.featured .t-incl li::before{color:var(--gold-lt)}
+  .tier.featured .t-best{background:var(--gold);color:var(--light)}
+  .t-best{position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+    background:var(--gold);color:var(--light);font-size:9px;letter-spacing:.34em;
+    text-transform:uppercase;padding:7px 18px;font-weight:500;letter-spacing:.32em;border-radius:1px}
+  .tier .t-num{font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:18px;color:var(--gold);margin-bottom:8px}
+  .tier h3{font-size:28px;font-weight:400;line-height:1.18;margin-bottom:8px;letter-spacing:-0.005em}
+  .price{font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:300;
+    color:var(--ink);margin:18px 0 6px;line-height:1}
+  .price .pcur{font-size:22px;vertical-align:top;margin-right:2px}
+  .price-sub{font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ink-soft);margin-bottom:22px;font-weight:400}
+  .tier.featured .price-sub{color:rgba(243,235,218,.6)}
+  .t-blurb{color:var(--ink-soft);font-size:14px;margin-bottom:24px;line-height:1.65}
+  .t-incl{list-style:none;margin-bottom:32px;flex:1}
+  .t-incl li{position:relative;padding:9px 0 9px 26px;font-size:13.5px;
+    color:var(--ink);border-bottom:1px solid var(--line-gold);line-height:1.5}
+  .t-incl li:last-child{border-bottom:none}
+  .t-incl li::before{content:"✓";position:absolute;left:0;top:9px;
+    color:var(--gold);font-weight:400}
+  .tier .btn{align-self:stretch;text-align:center;margin-top:auto}
+
+  /* HOW IT WORKS */
+  .how{padding:120px 0;background:var(--paper)}
+  .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:60px}
+  .how-step{text-align:center}
+  .how-step .sn{font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:42px;color:var(--gold);margin-bottom:14px;line-height:1}
+  .how-step h4{font-size:22px;font-weight:400;margin-bottom:10px}
+  .how-step p{color:var(--ink-soft);font-size:14px;max-width:280px;margin:0 auto}
+
+  /* FAQ */
+  .faq-sec{padding:120px 0;background:var(--cream-2)}
+  .faq-list{max-width:760px;margin:60px auto 0;
+    border-top:1px solid var(--line-gold)}
+  .faq{border-bottom:1px solid var(--line-gold)}
+  .faq-q{padding:24px 0;cursor:pointer;display:flex;justify-content:space-between;
+    align-items:center;font-family:'Cormorant Garamond',serif;font-size:22px;
+    color:var(--ink);transition:color .3s ease}
+  .faq-q:hover{color:var(--gold)}
+  .faq-q .fq-icon{font-size:18px;color:var(--gold);transition:transform .35s ease}
+  .faq.open .faq-q .fq-icon{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .55s ease;
+    color:var(--ink-soft);font-size:14.5px;line-height:1.75}
+  .faq.open .faq-a{max-height:300px;padding-bottom:24px}
+
+  /* CENTER HELPER */
+  .center{text-align:center}
+  .center h2{font-size:clamp(36px,4vw,56px);font-weight:300;margin:18px 0 14px;letter-spacing:-0.005em}
+  .center h2 em{font-style:italic;color:var(--gold)}
+  .center .body-soft{color:var(--ink-soft);font-size:15px;max-width:520px;margin:0 auto}
+
+  /* FOOTER */
+  footer{background:var(--taupe);color:var(--light);padding:90px 0 40px}
+  .foot-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:48px;
+    padding-bottom:56px;border-bottom:1px solid rgba(202,161,104,.28)}
+  .foot-brand .logo{font-size:30px;color:var(--light);padding-left:.4em;letter-spacing:.4em}
+  .foot-brand p{color:var(--light-soft);font-size:13.5px;max-width:280px;margin-top:18px}
+  .foot-col h4{font-family:'Outfit';font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold-lt);margin-bottom:20px;font-weight:400}
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .foot-col a{font-size:13px;color:var(--light-soft);transition:color .25s}
+  .foot-col a:hover{color:var(--gold-lt)}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:32px;flex-wrap:wrap;gap:12px;
+    font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--light-soft)}
+
+  @media(max-width:820px){
+    .util{display:none}
+    .navtoggle{display:block}
+    .brand-row{padding:24px 26px}
+    .nav-row{position:fixed;inset:0;background:var(--cream);z-index:120;border:none;
+      display:flex;align-items:center;justify-content:center;
+      opacity:0;visibility:hidden;transition:opacity .34s ease}
+    body.nav-open .nav-row{opacity:1;visibility:visible}
+    body.nav-open{overflow:hidden}
+    .nav-menu{flex-direction:column;gap:2px;width:100%;max-width:340px}
+    .nav-menu a{padding:15px 20px;font-size:15px;letter-spacing:.22em;text-align:center}
+  }
+  @media(max-width:980px){
+    .wrap{padding:0 28px}
+    .logo{font-size:38px}
+    .tier-grid{grid-template-columns:1fr;gap:38px;max-width:480px;margin-left:auto;margin-right:auto}
+    .how-grid{grid-template-columns:1fr;gap:48px}
+    .foot-top{grid-template-columns:1fr 1fr}
+    .tiers{padding:80px 0 40px}
+    .how,.faq-sec{padding:90px 0}
+  }
+  @media(max-width:560px){
+    .foot-top{grid-template-columns:1fr}
+    .price{font-size:38px}
+  }
+</style>
+</head>
+<body>
+<div class="announce">Complimentary samples &amp; shipping over $50 — expert-reviewed skincare</div>
+
+<header class="site">
+  <div class="util">
+    <span>Haute soin · clinically considered</span>
+    <span class="u-right"><a href="#">Search</a><a href="account.html">Account</a><a href="shop.html">Bag (0)</a></span>
+  </div>
+  <div class="brand-row">
+    <a href="index.html" class="logo">SSKENN<span class="lsub">Skincare</span></a>
+    <button class="navtoggle" aria-label="Open menu" onclick="document.body.classList.toggle('nav-open')"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="nav-row">
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="quiz.html">Glow Match System</a></li>
+      <li><a href="concerns.html">Skin Concerns</a></li>
+      <li><a href="consultants.html">Consultants</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="page-head">
+  <span class="kicker">Personalized · Expert-Reviewed</span>
+  <h1>Book a Skin <em>Routine Consultation</em></h1>
+  <div class="ph-rule"></div>
+  <p>Three levels of one-to-one guidance from a licensed skincare professional — choose the depth of support that matches where you are in your routine.</p>
+</section>
+
+<!-- THREE TIERS -->
+<section class="tiers">
+  <div class="wrap">
+    <div class="center">
+      <span class="kicker">Three Levels of Care</span>
+      <h2>From a quick check to a <em>full transformation</em>.</h2>
+      <p class="body-soft">Every tier is delivered by a credentialed esthetician or skincare specialist on the SSKENN panel.</p>
+    </div>
+
+    <div class="tier-grid">
+
+      <!-- Tier 1 -->
+      <div class="tier">
+        <span class="t-num">I</span>
+        <h3>Mini Routine Review</h3>
+        <p class="t-blurb">A fast, written review of your Glow Match results and a personalized routine recommendation, delivered to your inbox.</p>
+        <div class="price"><span class="pcur">$</span>39</div>
+        <div class="price-sub">One-time</div>
+        <ul class="t-incl">
+          <li>Email-only review of your Glow Match results</li>
+          <li>Personalized routine recommendation</li>
+          <li>Product suggestions from the SSKENN catalog</li>
+          <li>Reply within 3 business days</li>
+        </ul>
+        <a class="btn btn-fill" href="#book">Book Mini Review</a>
+      </div>
+
+      <!-- Tier 2 — Featured -->
+      <div class="tier featured">
+        <span class="t-best">Most Popular</span>
+        <span class="t-num" style="color:var(--gold-lt)">II</span>
+        <h3>Personalized Glow Consultation</h3>
+        <p class="t-blurb">A live 15-minute video session with a licensed skincare professional plus a written follow-up routine.</p>
+        <div class="price"><span class="pcur">$</span>89</div>
+        <div class="price-sub">One-time</div>
+        <ul class="t-incl">
+          <li>Detailed skin intake form</li>
+          <li>15-minute virtual consultation</li>
+          <li>Custom AM &amp; PM routines</li>
+          <li>Ingredient guidance &amp; product picks</li>
+          <li>Follow-up email summary</li>
+        </ul>
+        <a class="btn btn-gold" href="#book">Book Consultation</a>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="tier">
+        <span class="t-num">III</span>
+        <h3>30-Day Glow Plan</h3>
+        <p class="t-blurb">The full transformation — consultation, a curated product bundle delivered to your door, and a check-in to track results.</p>
+        <div class="price"><span class="pcur">$</span>259</div>
+        <div class="price-sub">All-inclusive</div>
+        <ul class="t-incl">
+          <li>Everything in Personalized Consultation</li>
+          <li>Curated product bundle (a $200+ value)</li>
+          <li>Scheduled 30-day check-in</li>
+          <li>Routine adjustments based on progress</li>
+          <li>Direct messaging with your consultant</li>
+        </ul>
+        <a class="btn btn-fill" href="#book">Book 30-Day Plan</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="wrap">
+    <div class="center">
+      <span class="kicker">How It Works</span>
+      <h2>Three steps to a routine that <em>actually fits</em>.</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="sn">I</div>
+        <h4>Choose your tier</h4>
+        <p>Pick the level of support that matches your needs and timeline.</p>
+      </div>
+      <div class="how-step">
+        <div class="sn">II</div>
+        <h4>Complete your intake</h4>
+        <p>Share your current routine, concerns, and goals through our intake form.</p>
+      </div>
+      <div class="how-step">
+        <div class="sn">III</div>
+        <h4>Get your routine</h4>
+        <p>Receive personalized guidance, product recommendations, and a follow-up summary.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="wrap">
+    <div class="center">
+      <span class="kicker">Frequently Asked</span>
+      <h2>Things to <em>know first</em>.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Who are the consultants?</span><span class="fq-icon">+</span>
+        </div>
+        <div class="faq-a">Every consultation is delivered by a licensed esthetician or credentialed skincare specialist on the SSKENN expert panel. Each consultant is vetted, trained on the SSKENN catalog, and held to our service standards.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>How do I prepare for the live consultation?</span><span class="fq-icon">+</span>
+        </div>
+        <div class="faq-a">Once you book, you'll receive an intake form and a video-call link. Have your current products on hand and be in a well-lit space so the consultant can see your skin clearly. That's it.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>What's the difference between the Mini Review and the Personalized Consultation?</span><span class="fq-icon">+</span>
+        </div>
+        <div class="faq-a">The Mini Review is text-based — your Glow Match answers reviewed and a routine recommended by email. The Personalized Consultation adds a live 15-minute video session so the consultant can see your skin, ask follow-up questions, and tailor the routine in real time.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Can I upgrade my tier later?</span><span class="fq-icon">+</span>
+        </div>
+        <div class="faq-a">Yes. If you start with a Mini Review and want to upgrade to a Personalized Consultation or a 30-Day Plan, the cost of the Mini Review is credited toward the next tier.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>What's the refund policy?</span><span class="fq-icon">+</span>
+        </div>
+        <div class="faq-a">If you haven't completed your intake form or attended your video session, you're eligible for a full refund. Once the consultation has been delivered, the service is final but the products in the 30-Day Plan can be returned per the standard SSKENN return policy.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="logo">SSKENN</span>
+        <p>Personalized routines, honest education, and barrier-first formulas for healthy, glowing skin at every stage.</p>
+      </div>
+      <div class="foot-col"><h4>Shop</h4>
+        <ul><li><a href="shop.html">All Products</a></li><li><a href="shop.html">Cleansers</a></li>
+          <li><a href="shop.html">Serums</a></li><li><a href="shop.html">Moisturizers</a></li>
+          <li><a href="shop.html">Sunscreen</a></li></ul></div>
+      <div class="foot-col"><h4>Discover</h4>
+        <ul><li><a href="concerns.html">Skin Concerns</a></li><li><a href="quiz.html">Glow Match System</a></li>
+          <li><a href="learn.html">Ingredients Library</a></li><li><a href="blog.html">The Journal</a></li>
+          <li><a href="tracker.html">Progress Tracker</a></li></ul></div>
+      <div class="foot-col"><h4>The Maison</h4>
+        <ul><li><a href="about.html">Our Story</a></li><li><a href="consultants.html">Consultants</a></li>
+          <li><a href="routine-review.html">Book a Routine Review</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="become-consultant.html">Become a Consultant</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 SSKENN · sskenn.com</span>
+      <span>Privacy · Terms · Accessibility</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skin Quiz — SSKENN</title>
+<title>Glow Match System — SSKENN</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
@@ -150,6 +150,32 @@
   .foot-bottom{display:flex;justify-content:space-between;padding-top:32px;flex-wrap:wrap;gap:12px;
     font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--light-soft)}
 
+  /* ===== QUIZ RESULT — PROFILE + BUNDLE ===== */
+  .profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line-gold);margin:36px 0 44px;
+    border:1px solid var(--line-gold)}
+  .pg-cell{background:var(--paper);padding:24px 22px;text-align:center}
+  .pg-label{display:block;font-family:'Outfit',sans-serif;font-size:10px;
+    letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft);font-weight:400;
+    margin-bottom:10px}
+  .pg-val{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;
+    color:var(--ink);line-height:1.2}
+  .pg-val.gold{color:var(--gold)}
+
+  .bundle-card{background:var(--mocha);color:var(--light);text-align:center;
+    padding:48px 38px;margin:40px 0;border:1px solid var(--gold)}
+  .bundle-card .kicker{color:var(--gold-lt);display:block;margin-bottom:14px}
+  .bundle-card h3{font-family:'Cormorant Garamond',serif;font-weight:400;
+    font-size:30px;color:var(--light);margin-bottom:14px;letter-spacing:-0.005em}
+  .bundle-card p{color:rgba(243,235,218,.78);font-size:14.5px;
+    max-width:480px;margin:0 auto 26px}
+
+  @media(max-width:640px){
+    .profile-grid{grid-template-columns:1fr}
+    .pg-cell{padding:20px}
+    .bundle-card{padding:36px 24px}
+  }
+
   /* ===== MOBILE NAVIGATION ===== */
   .brand-row{position:relative}
   .navtoggle{display:none;position:absolute;top:50%;right:24px;transform:translateY(-50%);
@@ -204,7 +230,7 @@
   <nav class="nav-row">
     <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
-      <li><a href="quiz.html" class="here">Skin Quiz</a></li>
+      <li><a href="quiz.html" class="here">Glow Match System</a></li>
       <li><a href="concerns.html">Skin Concerns</a></li>
       <li><a href="consultants.html">Consultants</a></li>
       <li><a href="membership.html">Membership</a></li>
@@ -220,7 +246,7 @@
   <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1500&q=80" alt="Skincare consultation">
   <div class="ph-in">
     <span class="kicker">Free · 3 Minutes</span>
-    <h1>Skin Quiz</h1>
+    <h1>Glow Match System</h1>
     <p>Five questions about your skin — and a routine composed around the answers.</p>
     <div class="ph-rule"></div>
   </div>
@@ -292,9 +318,27 @@
 
       <!-- RESULT -->
       <div class="q-result" id="qResult">
-        <span class="kicker">Your Personalized Result</span>
-        <h2>Your <em>SSKENN</em> routine.</h2>
+        <span class="kicker">Your Glow Match Result</span>
+        <h2 id="qResultName">Your <em>SSKENN</em> routine.</h2>
         <p class="q-summary" id="qSummary"></p>
+
+        <!-- Skin profile -->
+        <div class="profile-grid">
+          <div class="pg-cell">
+            <span class="pg-label">Skin Type</span>
+            <div class="pg-val" id="pgType"></div>
+          </div>
+          <div class="pg-cell">
+            <span class="pg-label">Main Concern</span>
+            <div class="pg-val" id="pgConcern"></div>
+          </div>
+          <div class="pg-cell">
+            <span class="pg-label">Recommended Line</span>
+            <div class="pg-val gold" id="pgLine"></div>
+          </div>
+        </div>
+
+        <!-- AM / PM routine -->
         <div class="routine">
           <div class="routine-col am">
             <div class="rc-label">☀ Morning</div>
@@ -305,17 +349,27 @@
             <ol id="qPM"></ol>
           </div>
         </div>
-        <div class="q-note" id="qNote"></div>
-        <div class="q-actions">
-          <a class="btn btn-fill" href="shop.html">Shop This Routine</a>
-          <button class="q-restart" id="qRestart">Retake the Quiz</button>
+
+        <!-- Starter bundle -->
+        <div class="bundle-card">
+          <span class="kicker">Your Starter Bundle</span>
+          <h3 id="qBundleName"></h3>
+          <p id="qBundleDesc"></p>
+          <a class="btn btn-fill" href="shop.html" id="qBundleLink">Shop the Bundle</a>
         </div>
 
+        <div class="q-note" id="qNote"></div>
+
+        <!-- Consultant CTA -->
         <div class="q-cta">
           <span class="kicker">Take It Further</span>
-          <h3>Want a personalized routine? <em>Book a Skin Routine Review</em>.</h3>
-          <p>A one-to-one session with a licensed skincare professional who reviews your current products, builds custom morning and evening routines, and sends a follow-up summary by email.</p>
-          <a class="btn" href="consultants.html#routine-review">Book Skin Routine Review</a>
+          <h3>Not sure what to buy? <em>Book a Routine Review</em>.</h3>
+          <p>A licensed skincare professional reviews your current products, builds custom morning and evening routines, and follows up by email.</p>
+          <a class="btn" href="routine-review.html">Book a Routine Review</a>
+        </div>
+
+        <div class="q-actions">
+          <button class="q-restart" id="qRestart">Retake Glow Match</button>
         </div>
       </div>
 
@@ -336,7 +390,7 @@
           <li><a href="shop.html">Serums</a></li><li><a href="shop.html">Moisturizers</a></li>
           <li><a href="shop.html">Sunscreen</a></li></ul></div>
       <div class="foot-col"><h4>Discover</h4>
-        <ul><li><a href="concerns.html">Skin Concerns</a></li><li><a href="quiz.html">Skin Quiz</a></li>
+        <ul><li><a href="concerns.html">Skin Concerns</a></li><li><a href="quiz.html">Glow Match System</a></li>
           <li><a href="learn.html">Ingredients Library</a></li><li><a href="blog.html">The Journal</a></li>
           <li><a href="tracker.html">Progress Tracker</a></li></ul></div>
       <div class="foot-col"><h4>The Maison</h4>
@@ -384,50 +438,133 @@
     });
   });
 
+  // Six result paths mapped to product lines
+  const RESULTS = {
+    reset: {
+      name: 'The Simple Skin Reset',
+      line: 'Essentials',
+      lineLink: 'shop.html',
+      desc: 'A clean, low-effort routine built on essentials that cleanse, hydrate, and protect — the foundation of healthy skin.',
+      bundle: 'The Essentials Starter Kit',
+      bundleDesc: 'Gentle cleanser, hydrating toner, daily moisturizer, and broad-spectrum SPF.',
+      am: ['Gentle cleanser','Hydrating toner','Daily moisturizer','Broad-spectrum SPF 30+'],
+      pm: ['Gentle cleanser','Hydrating toner','Daily moisturizer']
+    },
+    darkspot: {
+      name: 'The Dark Spot Glow Plan',
+      line: 'Clinical',
+      lineLink: 'shop.html',
+      desc: 'Targeted brightening for hyperpigmentation, post-acne marks, and uneven tone — clinically driven, results-focused.',
+      bundle: 'The Brightening Bundle',
+      bundleDesc: 'Vitamin C serum, niacinamide + tranexamic acid treatment, brightening moisturizer, and mineral SPF 50.',
+      am: ['Gentle cleanser','Vitamin C serum','Lightweight moisturizer','Mineral SPF 50'],
+      pm: ['Cleanser','Niacinamide + tranexamic acid','Hydrating moisturizer','Retinol — 2 to 3 nights per week']
+    },
+    luxury: {
+      name: 'The Luxury Renewal Ritual',
+      line: 'Ritual',
+      lineLink: 'shop.html',
+      desc: 'A slow, indulgent routine for visible renewal, firmness, and radiance — the full ritual experience.',
+      bundle: 'The Ritual Renewal Bundle',
+      bundleDesc: 'Cream cleanser, renewal essence, peptide serum, face oil, rich night cream, and SPF.',
+      am: ['Cream cleanser','Antioxidant essence','Peptide serum','Rich moisturizer','SPF 30+'],
+      pm: ['Cleansing oil','Cream cleanser','Renewal serum','Face oil','Night cream']
+    },
+    seoul: {
+      name: 'The Seoul Glass Skin Path',
+      line: 'Seoul',
+      lineLink: 'shop.html',
+      desc: 'Layered K-beauty hydration for plump, dewy, glass-skin glow — the seven-step Seoul method.',
+      bundle: 'The Glass Skin Bundle',
+      bundleDesc: 'Oil cleanser, foaming cleanser, toner, essence, ampoule, lotion, cream, and sleeping mask.',
+      am: ['Foaming cleanser','Hydrating toner','Essence','Ampoule','Lotion','Cream','SPF 30+'],
+      pm: ['Cleansing oil','Foaming cleanser','Toner','Essence','Sleeping mask']
+    },
+    barrier: {
+      name: 'The Barrier Repair Plan',
+      line: 'Essentials + Seoul',
+      lineLink: 'shop.html',
+      desc: 'A calming, barrier-first routine for reactive, dehydrated, or compromised skin — repair before everything else.',
+      bundle: 'The Barrier Repair Bundle',
+      bundleDesc: 'Cream cleanser, hydrating toner, ceramide essence, repair cream, and mineral SPF.',
+      am: ['Cream cleanser','Hydrating toner','Ceramide essence','Barrier moisturizer','Mineral SPF 30+'],
+      pm: ['Cream cleanser','Hydrating toner','Centella essence','Barrier repair cream','Sleeping mask — 2 nights per week']
+    },
+    complete: {
+      name: 'The Complete Glow System',
+      line: 'Clinical + Ritual',
+      lineLink: 'shop.html',
+      desc: 'Anti-aging, brightening, and renewal combined — the full advanced regimen for your most ambitious skin goals.',
+      bundle: 'The Complete Glow Bundle',
+      bundleDesc: 'Vitamin C serum, retinol treatment, peptide serum, renewal cream, face oil, and SPF.',
+      am: ['Gentle cleanser','Vitamin C serum','Peptide serum','Rich moisturizer','SPF 30+'],
+      pm: ['Cleansing oil','Cleanser','Retinol or renewal serum','Face oil','Night cream']
+    }
+  };
+
+  function pickResult(){
+    // Barrier always wins for sensitive/reactive skin
+    if(answers.sensitivity === 'High' || answers.type === 'Sensitive' || answers.concern === 'Redness') return 'barrier';
+
+    // Concern-driven paths
+    if(answers.concern === 'Dark Spots'){
+      return answers.level === 'Advanced' ? 'complete' : 'darkspot';
+    }
+    if(answers.concern === 'Acne')   return 'darkspot';  // Clinical line covers acne/blemish care
+    if(answers.concern === 'Texture') return 'darkspot'; // Clinical exfoliation + renewal
+    if(answers.concern === 'Fine Lines'){
+      return answers.level === 'Advanced' ? 'complete' : 'luxury';
+    }
+    if(answers.concern === 'Dryness') return 'seoul';    // K-beauty hydration
+
+    // Experience-driven fallback
+    if(answers.level === 'Advanced' && (answers.actives === 'Regular' || answers.actives === 'Occasional')){
+      return 'seoul';
+    }
+    return 'reset';
+  }
+
   function buildResult(){
-    steps.forEach(s=>s.classList.remove('active'));
-    nav.style.display='none';
-    bar.style.width='100%';
-    count.textContent='Complete';
-    result.classList.add('show');
+    try {
+      steps.forEach(s=>s.classList.remove('active'));
+      nav.style.display='none';
+      bar.style.width='100%';
+      count.textContent='Complete';
+      result.classList.add('show');
 
-    const treat={
-      'Acne':'Salicylic acid treatment','Dark Spots':'Vitamin C + niacinamide serum',
-      'Fine Lines':'Retinol treatment','Dryness':'Hyaluronic acid hydrating serum',
-      'Texture':'Gentle exfoliating treatment','Redness':'Niacinamide soothing serum'
-    }[answers.concern]||'Targeted serum';
-    const advanced=answers.level==='Advanced';
+      const r = RESULTS[pickResult()] || RESULTS.reset;
 
-    const am=['Gentle cleanser'];
-    const pm=['Gentle cleanser'];
-    if(advanced){
-      am.push('Antioxidant / vitamin C serum');
-      if(answers.concern==='Dryness')am.push('Hydrating layer');
-    }
-    am.push('Moisturizer','Sunscreen SPF '+(answers.sensitivity==='High'?'50 (mineral)':'30+'));
-    pm.push(treat);
-    if(advanced)pm.push('Hydrating layer');
-    pm.push('Moisturizer');
+    document.getElementById('qResultName').innerHTML = r.name.replace(/(Glow|Renewal|Glass|Barrier|Reset|Complete)/, '<em>$1</em>');
+    document.getElementById('qSummary').textContent = r.desc;
+    document.getElementById('pgType').textContent = answers.type || '—';
+    document.getElementById('pgConcern').textContent = answers.concern || '—';
+    document.getElementById('pgLine').textContent = r.line;
+    document.getElementById('qAM').innerHTML = r.am.map(x=>'<li>'+x+'</li>').join('');
+    document.getElementById('qPM').innerHTML = r.pm.map(x=>'<li>'+x+'</li>').join('');
+    document.getElementById('qBundleName').textContent = r.bundle;
+    document.getElementById('qBundleDesc').textContent = r.bundleDesc;
+    document.getElementById('qBundleLink').setAttribute('href', r.lineLink);
 
-    document.getElementById('qAM').innerHTML=am.map(x=>'<li>'+x+'</li>').join('');
-    document.getElementById('qPM').innerHTML=pm.map(x=>'<li>'+x+'</li>').join('');
-    document.getElementById('qSummary').textContent=
-      'For '+(answers.type||'your').toLowerCase()+' skin focused on '+
-      (answers.concern||'overall health').toLowerCase()+', here is a '+
-      (advanced?'targeted, multi-step':'simple, low-effort')+' routine to begin with.';
-
+    // Contextual note based on actives + sensitivity
     let note;
-    if(answers.sensitivity==='High'){
-      note='Your skin reacts easily — introduce one new active at a time, patch test first, and give each product two to three weeks. A mineral SPF tends to be gentler for reactive skin.';
-    }else if(answers.actives==='Never'){
-      note='New to actives? Begin your treatment step just two or three nights a week and build up slowly as your skin adjusts.';
-    }else if(answers.actives==='Regular'){
-      note='Since you already use actives, you can layer your treatment step with confidence — just avoid combining retinol and strong acids on the same night.';
-    }else{
-      note='Consistency matters more than complexity — give this routine four to six weeks before judging results, and wear daily SPF without exception.';
+    if(answers.sensitivity === 'High'){
+      note = 'Your skin reacts easily — introduce one new active at a time, patch test first, and give each product two to three weeks. A mineral SPF tends to be gentler for reactive skin.';
+    } else if(answers.actives === 'Never'){
+      note = 'New to actives? Begin treatment steps just two or three nights a week and build up slowly as your skin adjusts.';
+    } else if(answers.actives === 'Regular'){
+      note = 'Since you already use actives, you can layer treatments with confidence — just avoid combining retinol and strong acids on the same night.';
+    } else {
+      note = 'Consistency matters more than complexity — give this routine four to six weeks before judging results, and wear daily SPF without exception.';
     }
-    document.getElementById('qNote').textContent=note;
+    document.getElementById('qNote').textContent = note;
+
     window.scrollTo({top:document.querySelector('.quiz-sec').offsetTop-20,behavior:'smooth'});
+    } catch(err) {
+      console.error('Quiz result error:', err);
+      // Fallback so the user never sees a blank result
+      result.classList.add('show');
+      document.getElementById('qSummary').textContent = 'We had trouble building your routine. Try retaking the Glow Match, or book a one-to-one Routine Review.';
+    }
   }
 
   document.getElementById('qRestart').addEventListener('click',()=>{
