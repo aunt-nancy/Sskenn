@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Consultants — SSKENN</title>
+<title>Meet Your Glow Consultant — SSKENN</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
@@ -19,15 +19,17 @@
     font-weight:300;line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:400;line-height:1.12;color:var(--ink)}
   a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%}
   ::selection{background:var(--gold);color:var(--light)}
   .wrap{max-width:1240px;margin:0 auto;padding:0 50px}
   .kicker{font-size:10.5px;letter-spacing:.4em;text-transform:uppercase;font-weight:400;color:var(--gold)}
-  .btn{display:inline-block;padding:14px 28px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
-    font-weight:400;cursor:pointer;transition:all .35s ease;border:1px solid var(--ink);background:transparent}
-  .btn-fill{background:var(--ink);color:var(--light)}
+  .btn{display:inline-block;padding:14px 30px;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;font-weight:400;cursor:pointer;transition:all .4s ease;
+    border:1px solid var(--ink);background:transparent;color:var(--ink)}
+  .btn-fill{background:var(--ink);color:var(--light);border-color:var(--ink)}
   .btn-fill:hover{background:transparent;color:var(--ink)}
+  .btn:hover{background:var(--ink);color:var(--light)}
 
+  /* HEADER */
   .announce{background:var(--taupe);color:var(--light-soft);text-align:center;
     font-size:10px;letter-spacing:.28em;text-transform:uppercase;padding:11px 0}
   header.site{background:var(--cream);border-bottom:1px solid var(--line-gold)}
@@ -42,10 +44,9 @@
     color:var(--gold);margin-top:6px;font-weight:400;padding-left:.12em}
   .nav-row{border-top:1px solid var(--line-gold)}
   .nav-menu{max-width:1240px;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap;list-style:none}
-  .nav-menu a{display:block;padding:20px 26px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  .nav-menu a{display:block;padding:20px 22px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
     font-weight:400;color:var(--ink);transition:color .28s ease}
   .nav-menu a:hover,.nav-menu a.here{color:var(--gold)}
-  /* mobile menu */
   .navtoggle{display:none;position:absolute;top:50%;right:24px;transform:translateY(-50%);
     width:40px;height:40px;background:none;border:none;cursor:pointer;padding:8px;z-index:130}
   .navtoggle span{display:block;width:24px;height:1.5px;background:var(--ink);margin:5px auto;
@@ -54,105 +55,63 @@
   body.nav-open .navtoggle span:nth-child(2){opacity:0}
   body.nav-open .navtoggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
-  /* PAGE HEADER */
-  .page-head{position:relative;height:44vh;min-height:330px;display:flex;align-items:center;
-    justify-content:center;text-align:center;overflow:hidden}
-  .page-head img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .page-head::after{content:"";position:absolute;inset:0;background:rgba(38,30,21,.6)}
-  .page-head .ph-in{position:relative;z-index:2;padding:0 30px}
-  .page-head .kicker{color:var(--gold-lt)}
-  .page-head h1{font-size:clamp(46px,5.4vw,86px);font-weight:300;color:var(--light);
-    margin-top:14px;letter-spacing:-0.01em}
-  .page-head p{color:rgba(243,235,218,.8);max-width:480px;margin:14px auto 0;font-size:15px}
-  .ph-rule{width:46px;height:1px;background:var(--gold-lt);margin:20px auto 0}
+  /* PAGE HEAD */
+  .page-head{background:var(--paper);text-align:center;padding:80px 50px 60px;
+    border-bottom:1px solid var(--line-gold)}
+  .page-head .rule{width:46px;height:1px;background:var(--gold);margin:22px auto 20px}
+  .page-head h1{font-size:clamp(40px,5vw,68px);font-weight:300;letter-spacing:-0.01em}
+  .page-head h1 em{font-style:italic;color:var(--gold)}
+  .page-head p{color:var(--ink-soft);font-size:15.5px;max-width:540px;margin:16px auto 0}
 
-  /* INTRO + FILTERS */
-  .market{padding:100px 0 130px}
-  .market-intro{text-align:center;max-width:580px;margin:0 auto 50px}
-  .market-intro .rule{width:46px;height:1px;background:var(--gold);margin:0 auto 18px}
-  .market-intro h2{font-size:clamp(34px,4vw,58px);font-weight:300;margin:18px 0 14px;letter-spacing:-0.01em}
-  .market-intro h2 em{font-style:italic;color:var(--gold)}
-  .market-intro p{color:var(--ink-soft);font-size:15.5px}
-  .filters{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:64px;
-    padding:0 20px}
-  .chip{background:transparent;border:1px solid var(--line-gold);padding:9px 18px;cursor:pointer;
-    font-family:'Outfit';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
-    transition:all .28s ease}
-  .chip:hover{border-color:var(--gold);color:var(--ink)}
+  /* FILTER CHIPS */
+  .filter-sec{padding:60px 0 30px;background:var(--cream)}
+  .filter-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .chip{display:inline-block;padding:11px 22px;font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;font-weight:400;color:var(--ink);
+    border:1px solid var(--line-gold);background:transparent;cursor:pointer;
+    transition:all .32s ease}
+  .chip:hover{background:var(--paper);border-color:var(--gold)}
   .chip.on{background:var(--ink);color:var(--light);border-color:var(--ink)}
 
-  /* SKIN ROUTINE REVIEW (signature services - two tiers) */
-  .routine-review{padding:90px 0;background:var(--paper)}
-  .rr-intro{text-align:center;max-width:600px;margin:0 auto 50px}
-  .rr-intro .rule{width:46px;height:1px;background:var(--gold);margin:0 auto 18px}
-  .rr-intro h2{font-size:clamp(34px,4vw,56px);font-weight:300;margin:14px 0 14px;letter-spacing:-0.01em}
-  .rr-intro h2 em{font-style:italic;color:var(--gold)}
-  .rr-intro p{color:var(--ink-soft);font-size:15.5px}
-  .rr-tiers{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch}
-  .rr-card{background:var(--light);border:1px solid var(--line-gold);padding:50px 44px;
-    display:flex;flex-direction:column;position:relative;transition:border-color .4s ease}
-  .rr-card:hover{border-color:var(--gold)}
-  .rr-card-feat{background:var(--taupe);color:var(--light);border-color:rgba(202,161,104,.4)}
-  .rr-card-feat::before{content:"";position:absolute;top:14px;left:14px;right:14px;bottom:14px;
-    border:1px solid rgba(202,161,104,.22);pointer-events:none}
-  .rr-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);
-    color:var(--light);font-family:'Outfit',sans-serif;font-size:9.5px;letter-spacing:.24em;
-    text-transform:uppercase;padding:7px 18px;font-weight:400;z-index:3}
-  .rr-card-head{margin-bottom:30px;position:relative;z-index:2}
-  .rr-card-head .kicker{display:block;margin-bottom:12px}
-  .rr-card-feat .rr-card-head .kicker{color:var(--gold-lt)}
-  .rr-card-head h3{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;
-    margin-bottom:18px;letter-spacing:-0.01em;line-height:1.1;color:var(--ink)}
-  .rr-card-feat .rr-card-head h3{color:var(--light)}
-  .rr-price-fig{font-family:'Cormorant Garamond',serif;font-size:54px;color:var(--gold);
-    line-height:1;font-weight:400}
-  .rr-card-feat .rr-price-fig{color:var(--gold-lt)}
-  .rr-price-fig small{display:block;font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:.18em;
-    text-transform:uppercase;color:var(--ink-soft);margin-top:6px;font-weight:400}
-  .rr-card-feat .rr-price-fig small{color:var(--light-soft)}
-  .rr-list{list-style:none;display:flex;flex-direction:column;gap:18px;margin-bottom:32px;
-    flex-grow:1;position:relative;z-index:2}
-  .rr-list li{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
-  .rr-num{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);
-    font-style:italic;line-height:1.2;min-width:30px}
-  .rr-card-feat .rr-num{color:var(--gold-lt)}
-  .rr-item-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--ink);
-    display:block;margin-bottom:3px;line-height:1.3}
-  .rr-card-feat .rr-item-title{color:var(--light)}
-  .rr-item-desc{display:block;font-size:13px;color:var(--ink-soft);line-height:1.65}
-  .rr-card-feat .rr-item-desc{color:var(--light-soft)}
-  .rr-card .btn{align-self:flex-start;position:relative;z-index:2}
-  .rr-card-feat .btn-fill{background:var(--gold);border-color:var(--gold);color:var(--light)}
-  .rr-card-feat .btn-fill:hover{background:transparent;color:var(--gold-lt);border-color:var(--gold-lt)}
-  .rr-fineprint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13.5px;
-    color:var(--ink-soft);margin-top:14px;position:relative;z-index:2}
-  .rr-card-feat .rr-fineprint{color:var(--light-soft)}
-
   /* CONSULTANT GRID */
-  .c-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
-  .c-card{background:var(--light);border:1px solid var(--line-gold);padding:36px 34px;
-    display:flex;flex-direction:column;transition:transform .4s ease,border-color .4s ease}
-  .c-card:hover{border-color:var(--gold);transform:translateY(-3px)}
-  .c-card.hide{display:none}
-  .c-head{display:flex;gap:20px;align-items:flex-start;margin-bottom:18px}
-  .c-mono{width:60px;height:60px;border-radius:50%;border:1px solid var(--gold);flex:none;
-    display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;
-    font-size:25px;color:var(--gold)}
-  .c-name{font-size:25px;font-weight:400;margin-bottom:2px}
-  .c-role{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
-  .c-bio{font-size:13.5px;color:var(--ink-soft);margin-bottom:18px}
-  .c-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
-  .c-tag{font-size:10px;letter-spacing:.06em;color:var(--ink);border:1px solid var(--line-gold);
-    padding:4px 10px}
-  .c-foot{display:flex;justify-content:space-between;align-items:center;
-    padding-top:18px;border-top:1px solid var(--line-gold);margin-top:auto}
-  .c-price{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--ink)}
-  .c-price small{display:block;font-family:'Outfit';font-size:10px;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--ink-soft);margin-top:2px}
+  .market{padding:50px 0 110px;background:var(--cream)}
+  .count{text-align:center;color:var(--ink-soft);font-size:13px;letter-spacing:.06em;
+    margin-bottom:36px;font-style:italic;font-family:'Cormorant Garamond',serif}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .card{background:var(--paper);border:1px solid var(--line-gold);
+    padding:38px 30px 32px;text-align:center;display:flex;flex-direction:column;
+    transition:transform .5s ease,box-shadow .5s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(43,34,24,.18)}
+  .avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 18px;
+    background:var(--mocha);color:var(--gold-lt);display:flex;align-items:center;
+    justify-content:center;font-family:'Cormorant Garamond',serif;font-size:30px;
+    letter-spacing:.06em;font-weight:400;padding-left:.05em;
+    border:1px solid var(--gold)}
+  .card h3{font-size:24px;font-weight:400;margin-bottom:4px;letter-spacing:-0.005em}
+  .credential{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:18px;font-weight:400}
+  .specs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:14px}
+  .spec{font-size:10px;letter-spacing:.06em;color:var(--ink-soft);padding:3px 9px;
+    background:rgba(169,128,63,.1);border:1px solid var(--line-gold);
+    border-radius:1px;text-transform:none;font-style:italic;
+    font-family:'Cormorant Garamond',serif}
+  .bio{font-size:13.5px;color:var(--ink-soft);margin-bottom:20px;line-height:1.6;flex:1}
+  .price-row{font-size:12px;letter-spacing:.06em;color:var(--ink-soft);
+    margin-bottom:18px;font-family:'Cormorant Garamond',serif;font-style:italic}
+  .price-row strong{color:var(--gold);font-style:normal;font-family:'Outfit';
+    font-weight:500;font-size:13px;letter-spacing:.04em}
+  .card .btn{align-self:stretch;text-align:center}
 
-  .no-results{grid-column:1/-1;text-align:center;padding:80px 30px;color:var(--ink-soft);
-    font-family:'Cormorant Garamond';font-style:italic;font-size:22px;display:none}
-  .no-results.show{display:block}
+  .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--ink-soft);
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px}
+
+  /* BANDS */
+  .reassure-band{background:var(--mocha);color:var(--light);text-align:center;padding:80px 50px}
+  .reassure-band .kicker{color:var(--gold-lt)}
+  .reassure-band h2{font-size:clamp(28px,3.4vw,46px);font-weight:300;color:var(--light);
+    margin:14px 0 12px}
+  .reassure-band h2 em{font-style:italic;color:var(--gold-lt)}
+  .reassure-band p{color:rgba(243,235,218,.78);max-width:540px;margin:0 auto 28px;font-size:14.5px}
 
   /* FOOTER */
   footer{background:var(--taupe);color:var(--light);padding:90px 0 40px}
@@ -167,9 +126,6 @@
   .foot-col a:hover{color:var(--gold-lt)}
   .foot-bottom{display:flex;justify-content:space-between;padding-top:32px;flex-wrap:wrap;gap:12px;
     font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--light-soft)}
-
-  .rv{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
-  .rv.in{opacity:1;transform:none}
 
   @media(max-width:820px){
     .util{display:none}
@@ -186,24 +142,18 @@
   @media(max-width:980px){
     .wrap{padding:0 28px}
     .logo{font-size:38px}
-    .c-grid{grid-template-columns:1fr}
-    .market{padding:70px 0 90px}
-    .routine-review{padding:60px 0}
-    .rr-tiers{grid-template-columns:1fr;gap:40px}
-    .rr-card{padding:38px 30px}
+    .grid{grid-template-columns:repeat(2,1fr)}
     .foot-top{grid-template-columns:1fr 1fr}
   }
-  @media(max-width:560px){
+  @media(max-width:600px){
+    .grid{grid-template-columns:1fr}
     .foot-top{grid-template-columns:1fr}
-    .c-card{padding:28px 24px}
-    .c-foot{flex-direction:column;align-items:flex-start;gap:14px}
-    .rr-card{padding:32px 22px}
-    .rr-card-feat::before{display:none}
   }
 </style>
 </head>
 <body>
 <div class="announce">Complimentary samples &amp; shipping over $50 — expert-reviewed skincare</div>
+
 <header class="site">
   <div class="util">
     <span>Haute soin · clinically considered</span>
@@ -216,7 +166,7 @@
   <nav class="nav-row">
     <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
-      <li><a href="quiz.html">Skin Quiz</a></li>
+      <li><a href="quiz.html">Glow Match System</a></li>
       <li><a href="concerns.html">Skin Concerns</a></li>
       <li><a href="consultants.html" class="here">Consultants</a></li>
       <li><a href="membership.html">Membership</a></li>
@@ -227,168 +177,47 @@
   </nav>
 </header>
 
+<!-- PAGE HEAD -->
 <section class="page-head">
-  <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?w=1500&q=80" alt="Skincare consultants">
-  <div class="ph-in">
-    <span class="kicker">The Consultant Marketplace</span>
-    <h1>Find Your Consultant</h1>
-    <p>Book a one-to-one session with a licensed skincare professional, matched to your concern.</p>
-    <div class="ph-rule"></div>
-  </div>
+  <span class="kicker">The SSKENN Expert Panel</span>
+  <h1>Meet Your <em>Glow Consultant</em></h1>
+  <div class="rule"></div>
+  <p>Browse licensed estheticians and skincare specialists on the SSKENN panel. Filter by what your skin needs and book a one-to-one session.</p>
 </section>
 
-<section class="routine-review" id="routine-review">
+<!-- FILTERS -->
+<section class="filter-sec">
   <div class="wrap">
-    <div class="rr-intro rv">
-      <div class="rule"></div>
-      <span class="kicker">Our Signature Services</span>
-      <h2>Two ways to get <em>expert eyes</em> on your skin.</h2>
-      <p>A quick email review or a full one-to-one video session — whichever fits where you are.</p>
-    </div>
-    <div class="rr-tiers">
-
-      <article class="rr-card rv">
-        <div class="rr-card-head">
-          <span class="kicker">Tier One</span>
-          <h3>Mini Consultation</h3>
-          <div class="rr-price-fig">$50<small>email response</small></div>
-        </div>
-        <ul class="rr-list">
-          <li><span class="rr-num">01</span><div><span class="rr-item-title">Skin quiz review</span><span class="rr-item-desc">We look over your free quiz answers and your skin profile in detail.</span></div></li>
-          <li><span class="rr-num">02</span><div><span class="rr-item-title">Basic routine recommendation</span><span class="rr-item-desc">A short, gentle starter routine with simple morning and evening steps.</span></div></li>
-          <li><span class="rr-num">03</span><div><span class="rr-item-title">Email-only response</span><span class="rr-item-desc">A written reply within 3 business days — ideal if you don't need a live session.</span></div></li>
-        </ul>
-        <a class="btn btn-fill" href="#book-mini">Book Mini Consultation</a>
-        <p class="rr-fineprint">Written response delivered within 3 business days</p>
-      </article>
-
-      <article class="rr-card rr-card-feat rv">
-        <span class="rr-badge">Most Popular</span>
-        <div class="rr-card-head">
-          <span class="kicker">Tier Two · Signature</span>
-          <h3>Skin Routine Review</h3>
-          <div class="rr-price-fig">$95<small>60-min video session</small></div>
-        </div>
-        <ul class="rr-list">
-          <li><span class="rr-num">01</span><div><span class="rr-item-title">Skin concern intake form</span><span class="rr-item-desc">Tell us about your skin in advance so we make the most of every minute.</span></div></li>
-          <li><span class="rr-num">02</span><div><span class="rr-item-title">Current product review</span><span class="rr-item-desc">What to keep, what to retire, what's working against you.</span></div></li>
-          <li><span class="rr-num">03</span><div><span class="rr-item-title">Recommended morning routine</span><span class="rr-item-desc">A step-by-step morning routine built around your skin's actual needs.</span></div></li>
-          <li><span class="rr-num">04</span><div><span class="rr-item-title">Recommended evening routine</span><span class="rr-item-desc">Including actives, layering order, and when to introduce each one.</span></div></li>
-          <li><span class="rr-num">05</span><div><span class="rr-item-title">Personalized product suggestions</span><span class="rr-item-desc">SSKENN and third-party recommendations — only what you actually need.</span></div></li>
-          <li><span class="rr-num">06</span><div><span class="rr-item-title">Follow-up email summary</span><span class="rr-item-desc">Everything in writing, sent within 48 hours of your session.</span></div></li>
-        </ul>
-        <a class="btn btn-fill" href="#book-review">Book Skin Routine Review</a>
-        <p class="rr-fineprint">Video session + written summary within 48 hours</p>
-      </article>
-
+    <div class="filter-chips" id="chips">
+      <button class="chip on" data-spec="all">All Consultants</button>
+      <button class="chip" data-spec="Dark Spots">Dark Spots</button>
+      <button class="chip" data-spec="Acne-Prone Skin">Acne-Prone Skin</button>
+      <button class="chip" data-spec="Mature Skin">Mature Skin</button>
+      <button class="chip" data-spec="Sensitive Skin">Sensitive Skin</button>
+      <button class="chip" data-spec="K-Beauty Layering">K-Beauty Layering</button>
+      <button class="chip" data-spec="Luxury Skincare">Luxury Skincare</button>
+      <button class="chip" data-spec="Teen Skincare">Teen Skincare</button>
+      <button class="chip" data-spec="Beginner Routines">Beginner Routines</button>
     </div>
   </div>
 </section>
 
+<!-- MARKET -->
 <section class="market">
   <div class="wrap">
-    <div class="market-intro rv">
-      <div class="rule"></div>
-      <span class="kicker">Filter by Specialty</span>
-      <h2>The right expert for <em>your skin</em>.</h2>
-      <p>Choose the area you'd like guidance on — we'll show consultants who specialize in it.</p>
-    </div>
-    <div class="filters">
-      <button class="chip on" data-cat="all">All</button>
-      <button class="chip" data-cat="acne">Acne-Prone</button>
-      <button class="chip" data-cat="darkspots">Dark Spots</button>
-      <button class="chip" data-cat="mature">Mature Skin</button>
-      <button class="chip" data-cat="sensitive">Sensitive Skin</button>
-      <button class="chip" data-cat="kbeauty">K-Beauty Layering</button>
-      <button class="chip" data-cat="luxury">Luxury Routines</button>
-      <button class="chip" data-cat="teen">Teen Skincare</button>
-      <button class="chip" data-cat="makeup">Makeup Prep</button>
-    </div>
-
-    <div class="c-grid" id="cGrid">
-      <article class="c-card rv" data-cats="acne sensitive">
-        <div class="c-head"><div class="c-mono">M</div>
-          <div><div class="c-name">Dr. Maya Ellison</div><div class="c-role">Board-Certified Dermatologist</div></div></div>
-        <p class="c-bio">Clinical guidance for inflammatory acne and reactive, easily-triggered skin. Evidence-led, gentle, and sustainable.</p>
-        <div class="c-tags"><span class="c-tag">Acne-Prone</span><span class="c-tag">Sensitive Skin</span></div>
-        <div class="c-foot"><div class="c-price">$140<small>45-min session</small></div><a class="btn btn-fill" href="#">Book Session</a></div>
-      </article>
-
-      <article class="c-card rv" data-cats="kbeauty luxury">
-        <div class="c-head"><div class="c-mono">R</div>
-          <div><div class="c-name">Renata Cho</div><div class="c-role">Licensed Master Esthetician</div></div></div>
-        <p class="c-bio">K-beauty layering, glass-skin rituals, and luxury home-spa routines built around your skin's response.</p>
-        <div class="c-tags"><span class="c-tag">K-Beauty Layering</span><span class="c-tag">Luxury Routines</span></div>
-        <div class="c-foot"><div class="c-price">$95<small>45-min session</small></div><a class="btn btn-fill" href="#">Book Session</a></div>
-      </article>
-
-      <article class="c-card rv" data-cats="mature darkspots">
-        <div class="c-head"><div class="c-mono">A</div>
-          <div><div class="c-name">Dr. Adib Karim</div><div class="c-role">Cosmetic Dermatologist</div></div></div>
-        <p class="c-bio">Mature-skin renewal, pigmentation, and the science of which actives actually move the needle — and when.</p>
-        <div class="c-tags"><span class="c-tag">Mature Skin</span><span class="c-tag">Dark Spots</span></div>
-        <div class="c-foot"><div class="c-price">$160<small>45-min session</small></div><a class="btn btn-fill" href="#">Book Session</a></div>
-      </article>
-
-      <article class="c-card rv" data-cats="teen sensitive">
-        <div class="c-head"><div class="c-mono">J</div>
-          <div><div class="c-name">Joelle Banks</div><div class="c-role">Skin Health Educator</div></div></div>
-        <p class="c-bio">Gentle first routines for teens and reactive skin. Patient, age-appropriate, and free of fear-based language.</p>
-        <div class="c-tags"><span class="c-tag">Teen Skincare</span><span class="c-tag">Sensitive Skin</span></div>
-        <div class="c-foot"><div class="c-price">$70<small>30-min session</small></div><a class="btn btn-fill" href="#">Book Session</a></div>
-      </article>
-
-      <article class="c-card rv" data-cats="acne teen">
-        <div class="c-head"><div class="c-mono">I</div>
-          <div><div class="c-name">Iris Vega</div><div class="c-role">Licensed Esthetician</div></div></div>
-        <p class="c-bio">Hormonal and teen breakouts. A no-stripping approach to clearer skin that respects the barrier.</p>
-        <div class="c-tags"><span class="c-tag">Acne-Prone</span><span class="c-tag">Teen Skincare</span></div>
-        <div class="c-foot"><div class="c-price">$85<small>45-min session</small></div><a class="btn btn-fill" href="#">Book Session</a></div>
-      </article>
-
-      <article class="c-card rv" data-cats="kbeauty luxury">
-        <div class="c-head"><div class="c-mono">N</div>
-          <div><div class="c-name">Naomi Park</div><div class="c-role">Korean Skincare Specialist</div></div></div>
-        <p class="c-bio">Authentic Korean-skincare layering and seasonal routines for plump, luminous, glass-skin results.</p>
-        <div class="c-tags"><span class="c-tag">K-Beauty Layering</span><span class="c-tag">Luxury Routines</span></div>
-        <div class="c-foot"><div class="c-price">$105<small>45-min session</small></div><a class="btn btn-fill" href="#">Book Session</a></div>
-      </article>
-
-      <article class="c-card rv" data-cats="mature darkspots luxury">
-        <div class="c-head"><div class="c-mono">A</div>
-          <div><div class="c-name">Dr. Aliya Roshan</div><div class="c-role">Cosmetic Dermatologist</div></div></div>
-        <p class="c-bio">Discreet, luxury-tier guidance for fine lines, firmness, and hyperpigmentation — at every stage of skin maturity.</p>
-        <div class="c-tags"><span class="c-tag">Mature Skin</span><span class="c-tag">Dark Spots</span><span class="c-tag">Luxury Routines</span></div>
-        <div class="c-foot"><div class="c-price">$185<small>60-min session</small></div><a class="btn btn-fill" href="#">Book Session</a></div>
-      </article>
-
-      <article class="c-card rv" data-cats="makeup luxury">
-        <div class="c-head"><div class="c-mono">C</div>
-          <div><div class="c-name">Camille Beaumont</div><div class="c-role">Pro Makeup Artist</div></div></div>
-        <p class="c-bio">Skincare-as-makeup-prep — the skin work that makes complexion products sit beautifully on the day.</p>
-        <div class="c-tags"><span class="c-tag">Makeup Prep</span><span class="c-tag">Luxury Routines</span></div>
-        <div class="c-foot"><div class="c-price">$120<small>45-min session</small></div><a class="btn btn-fill" href="#">Book Session</a></div>
-      </article>
-
-      <article class="c-card rv" data-cats="sensitive acne">
-        <div class="c-head"><div class="c-mono">T</div>
-          <div><div class="c-name">Theo Mendes</div><div class="c-role">Licensed Esthetician</div></div></div>
-        <p class="c-bio">Barrier-first routines for reactive, eczema-prone, and over-exfoliated skin recovering from too many actives.</p>
-        <div class="c-tags"><span class="c-tag">Sensitive Skin</span><span class="c-tag">Acne-Prone</span></div>
-        <div class="c-foot"><div class="c-price">$90<small>45-min session</small></div><a class="btn btn-fill" href="#">Book Session</a></div>
-      </article>
-
-      <article class="c-card rv" data-cats="teen kbeauty">
-        <div class="c-head"><div class="c-mono">L</div>
-          <div><div class="c-name">Léa Dufour</div><div class="c-role">Skincare Educator</div></div></div>
-        <p class="c-bio">Teen-friendly K-beauty layering — simple, fun, gentle steps that build healthy lifelong skin habits.</p>
-        <div class="c-tags"><span class="c-tag">Teen Skincare</span><span class="c-tag">K-Beauty Layering</span></div>
-        <div class="c-foot"><div class="c-price">$65<small>30-min session</small></div><a class="btn btn-fill" href="#">Book Session</a></div>
-      </article>
-
-      <div class="no-results" id="noResults">No consultants matched that specialty — try another filter.</div>
+    <div class="count" id="count">Showing 12 consultants</div>
+    <div class="grid" id="grid">
+      <!-- Cards injected by JS -->
     </div>
   </div>
+</section>
+
+<!-- REASSURE BAND -->
+<section class="reassure-band">
+  <span class="kicker">Vetted &amp; Credentialed</span>
+  <h2>Every consultant on this panel is <em>licensed</em>.</h2>
+  <p>Every SSKENN consultant is a credentialed esthetician or skincare specialist, trained on our catalog and held to our service standards. Each session is delivered through the SSKENN platform with intake forms, follow-up summaries, and a satisfaction guarantee.</p>
+  <a class="btn btn-fill" href="routine-review.html" style="border-color:var(--gold-lt);background:var(--gold);color:var(--light)">View Consultation Tiers</a>
 </section>
 
 <footer>
@@ -403,13 +232,14 @@
           <li><a href="shop.html">Serums</a></li><li><a href="shop.html">Moisturizers</a></li>
           <li><a href="shop.html">Sunscreen</a></li></ul></div>
       <div class="foot-col"><h4>Discover</h4>
-        <ul><li><a href="concerns.html">Skin Concerns</a></li><li><a href="quiz.html">Skin Quiz</a></li>
+        <ul><li><a href="concerns.html">Skin Concerns</a></li><li><a href="quiz.html">Glow Match System</a></li>
           <li><a href="learn.html">Ingredients Library</a></li><li><a href="blog.html">The Journal</a></li>
           <li><a href="tracker.html">Progress Tracker</a></li></ul></div>
       <div class="foot-col"><h4>The Maison</h4>
         <ul><li><a href="about.html">Our Story</a></li><li><a href="consultants.html">Consultants</a></li>
-          <li><a href="membership.html">Membership</a></li><li><a href="become-consultant.html">Become a Consultant</a></li>
-          <li><a href="#">Contact</a></li></ul></div>
+          <li><a href="routine-review.html">Book a Routine Review</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="become-consultant.html">Become a Consultant</a></li></ul></div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 SSKENN · sskenn.com</span>
@@ -419,28 +249,59 @@
 </footer>
 
 <script>
-  const io=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting){
-    setTimeout(()=>e.target.classList.add('in'),(i%2)*90);io.unobserve(e.target);}});},{threshold:.1});
-  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+  const CONSULTANTS = [
+    { name: 'Maya R.',     monogram: 'MR', credential: 'Licensed Esthetician',     specs: ['Dark Spots','Sensitive Skin'],          years: 8,  price: 39, bio: 'Specializes in hyperpigmentation and post-inflammatory marks for skin of color.' },
+    { name: 'Sienna K.',   monogram: 'SK', credential: 'K-Beauty Specialist',      specs: ['K-Beauty Layering','Beginner Routines'],years: 6,  price: 39, bio: 'Korean skincare trained — guides clients through the seven-step glass skin method.' },
+    { name: 'Naomi T.',    monogram: 'NT', credential: 'Master Esthetician',       specs: ['Mature Skin','Luxury Skincare'],        years: 12, price: 89, bio: 'Twelve years in luxury anti-aging — peptides, retinoids, and the SSKENN Ritual line.' },
+    { name: 'Priya M.',    monogram: 'PM', credential: 'Licensed Esthetician',     specs: ['Acne-Prone Skin','Teen Skincare'],      years: 5,  price: 39, bio: 'Teen and adolescent acne, hormonal breakouts, and confidence building for younger skin.' },
+    { name: 'Eleanor V.',  monogram: 'EV', credential: 'Dermatology Aesthetician', specs: ['Mature Skin','Dark Spots'],             years: 10, price: 89, bio: 'Clinical-aesthetic crossover — trained in advanced brightening and renewal protocols.' },
+    { name: 'Riya S.',     monogram: 'RS', credential: 'K-Beauty Consultant',      specs: ['K-Beauty Layering','Luxury Skincare'],  years: 7,  price: 39, bio: 'Seoul-trained — bridges the SSKENN catalog with traditional K-beauty layering.' },
+    { name: 'Camille D.',  monogram: 'CD', credential: 'Licensed Esthetician',     specs: ['Sensitive Skin','Beginner Routines'],   years: 4,  price: 39, bio: 'Barrier-first specialist for reactive, rosacea-prone, and easily-irritated skin.' },
+    { name: 'Olivia P.',   monogram: 'OP', credential: 'Master Esthetician',       specs: ['Acne-Prone Skin','Dark Spots'],         years: 9,  price: 89, bio: 'Adult acne, cystic breakouts, and the post-acne pigmentation that often follows.' },
+    { name: 'Aria L.',     monogram: 'AL', credential: 'Licensed Esthetician',     specs: ['Teen Skincare','Beginner Routines'],    years: 5,  price: 39, bio: 'First routines for teens and beginners — simple, gentle, and ingredient-conscious.' },
+    { name: 'Isabella M.', monogram: 'IM', credential: 'Master Esthetician',       specs: ['Luxury Skincare','Mature Skin'],        years: 11, price: 89, bio: 'High-touch routines around peptides, exosomes, and the SSKENN Ritual line.' },
+    { name: 'Sasha H.',    monogram: 'SH', credential: 'Holistic Esthetician',     specs: ['Sensitive Skin','Beginner Routines'],   years: 6,  price: 39, bio: 'Calm, intuitive, barrier-led skincare for those new to actives.' },
+    { name: 'Tahira A.',   monogram: 'TA', credential: 'Licensed Esthetician',     specs: ['Dark Spots','Teen Skincare'],           years: 7,  price: 39, bio: 'Melasma, sun damage, and adolescent hyperpigmentation across all skin tones.' }
+  ];
 
-  const chips=document.querySelectorAll('.chip');
-  const cards=document.querySelectorAll('.c-card');
-  const noRes=document.getElementById('noResults');
-  chips.forEach(chip=>{
-    chip.addEventListener('click',()=>{
-      chips.forEach(c=>c.classList.remove('on'));
-      chip.classList.add('on');
-      const cat=chip.dataset.cat;
-      let visible=0;
-      cards.forEach(card=>{
-        const cats=card.dataset.cats||'';
-        const show=cat==='all'||cats.split(' ').includes(cat);
-        card.classList.toggle('hide',!show);
-        if(show)visible++;
-      });
-      noRes.classList.toggle('show',visible===0);
-    });
+  const grid = document.getElementById('grid');
+  const count = document.getElementById('count');
+  const chips = document.getElementById('chips');
+
+  function render(spec){
+    const list = spec === 'all'
+      ? CONSULTANTS
+      : CONSULTANTS.filter(c => c.specs.includes(spec));
+
+    count.textContent = 'Showing ' + list.length + (list.length === 1 ? ' consultant' : ' consultants')
+      + (spec !== 'all' ? ' for ' + spec : '');
+
+    if(!list.length){
+      grid.innerHTML = '<div class="empty">No consultants in this specialty yet — check back soon.</div>';
+      return;
+    }
+
+    grid.innerHTML = list.map(c => `
+      <div class="card">
+        <div class="avatar">${c.monogram}</div>
+        <h3>${c.name}</h3>
+        <div class="credential">${c.credential}</div>
+        <div class="specs">${c.specs.map(s => '<span class="spec">' + s + '</span>').join('')}</div>
+        <p class="bio">${c.bio}</p>
+        <div class="price-row">${c.years} years experience · from <strong>$${c.price}</strong></div>
+        <a class="btn" href="routine-review.html">Book Session</a>
+      </div>
+    `).join('');
+  }
+
+  chips.addEventListener('click', e => {
+    if(!e.target.classList.contains('chip')) return;
+    chips.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
+    e.target.classList.add('on');
+    render(e.target.dataset.spec);
   });
+
+  render('all');
 </script>
 </body>
 </html>
